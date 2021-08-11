@@ -1,0 +1,14 @@
+:root {
+  --font-sans: helvetica, arial, sans-serif;
+
+  // colors
+  --color-black: #111;
+  --color-white: #eee;
+  --color-turquoise: #2b9474;
+}
+
+body {
+  --color-background: var(--color-white);
+  --color-text: var(--color-black);
+  --color-highlight: var(--color-turquoise);
+}
