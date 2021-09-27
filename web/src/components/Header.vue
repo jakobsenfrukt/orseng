@@ -1,33 +1,71 @@
 <template>
   <header class="site-header">
-    <div class="logo">
-      <h1>Ørseng Interiørarkitektur</h1>
-    </div>
-    <nav class="nav">
+    <nav class="nav nav-left">
+      <MenuIcon class="icon" />
       <g-link class="nav-link" to="/">Prosjekter</g-link>
-      <g-link class="nav-link" to="/partners/">Samarbeidspartnere</g-link>
-      <g-link class="nav-link" to="/about/">Om meg</g-link>
-      <g-link class="nav-link" to="/contact/">Kontakt</g-link>
+      <g-link class="nav-link" to="/studio/">Studio</g-link>
+    </nav>
+    <g-link class="logo" to="/">
+      <Logo />
+    </g-link>
+    <nav class="nav nav-right">
+      <ToggleTheme />
     </nav>
   </header>
 </template>
 
+<script>
+import Logo from '@/components/graphics/logo/Logo.vue'
+import MenuIcon from '@/components/graphics/icons/MenuIcon.vue'
+import ToggleTheme from '~/components/ToggleTheme.vue'
+
+export default {
+  components: {
+    Logo,
+    MenuIcon,
+    ToggleTheme
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .site-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: var(--site-padding);
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(var(--color-background), transparent);
 }
 
 .logo {
-  h1 {
-    line-height: 1;
-    margin: 0;
-  }
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
 }
 
+.icon {
+  width: 1.4rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-left {
+    align-items: flex-start;
+  }
+  &-right {
+    align-items: flex-end;
+  }
+}
 .nav-link {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 </style>

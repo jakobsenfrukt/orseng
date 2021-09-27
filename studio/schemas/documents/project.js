@@ -39,13 +39,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'excerpt',
-      title: 'Ingress',
-      type: 'simplePortableText'
-    },
-    {
-      name: 'body',
-      title: 'Brødtekst',
+      name: 'description',
+      title: 'Beskrivelse',
       type: 'simplePortableText'
     },
     {

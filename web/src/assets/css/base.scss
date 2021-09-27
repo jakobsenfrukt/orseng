@@ -11,9 +11,12 @@ html {
 
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
   background: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
+  transition: color .4s ease-in, background-color .4s ease-in;
 }
 
 a {
