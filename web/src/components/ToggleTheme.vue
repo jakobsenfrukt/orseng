@@ -72,6 +72,10 @@ export default {
   cursor: pointer;
   color: currentColor;
 
+  position: absolute;
+  top: 0;
+  right: 0;
+
   svg {
     width: 1rem;
     height: 1rem;

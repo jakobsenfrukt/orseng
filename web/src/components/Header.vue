@@ -1,14 +1,16 @@
 <template>
   <header class="site-header">
     <nav class="nav nav-left">
-      <MenuIcon class="icon" />
+      <!--<MenuIcon class="icon" />-->
       <g-link class="nav-link" to="/">Prosjekter</g-link>
-      <g-link class="nav-link" to="/studio/">Studio</g-link>
+      <g-link class="nav-link" to="/studio">Studio</g-link>
     </nav>
     <g-link class="logo" to="/">
       <Logo />
     </g-link>
     <nav class="nav nav-right">
+      <a class="nav-link" href="#kontakt">Kontakt</a>
+      <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
       <ToggleTheme />
     </nav>
   </header>
@@ -35,9 +37,9 @@ export default {
   justify-content: center;
   align-items: center;
   padding: var(--site-padding);
-  position: absolute;
+  //position: fixed;
+  z-index: 1000;
   width: 100%;
-  background: linear-gradient(var(--color-background), transparent);
 }
 
 .logo {
@@ -55,17 +57,28 @@ export default {
 
 .nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  &-link {
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
 
   &-left {
-    align-items: flex-start;
+    justify-content: flex-start;
+    .nav-link {
+      margin: 0 3rem 0 0;
+    }
   }
   &-right {
-    align-items: flex-end;
+    justify-content: flex-end;
+    .nav-link {
+      margin: 0 0 0 3rem;
+    }
   }
-}
-.nav-link {
-  margin-right: 20px;
 }
 </style>
