@@ -37,7 +37,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: var(--site-padding);
-  //position: fixed;
+  position: fixed;
   z-index: 1000;
   width: 100%;
 }

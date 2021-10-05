@@ -23,6 +23,7 @@ query {
           title
         }
         publishedAt(format: "D. MMMM YYYY")
+        lead
         _rawDescription
         mainImage {
           asset {
@@ -73,10 +74,5 @@ export default {
   grid-template-columns: 1fr;
   gap: var(--site-padding);
   padding: var(--site-padding);
-}
-@media (min-width: 800px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 </style>

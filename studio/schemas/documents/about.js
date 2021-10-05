@@ -9,24 +9,19 @@ export default {
       title: 'Tittel'
     },
     {
-      name: 'excerpt',
-      title: 'Ingress',
+      name: 'lead',
+      title: 'Intro',
       type: 'text'
     },
     {
-      name: 'body',
+      name: 'bio',
       title: 'Bio',
-      type: 'simplePortableText'
+      type: 'bio'
     },
     {
       name: 'clients',
       title: 'Kunder',
       type: 'simplePortableText'
-    },
-    {
-      name: 'mainImage',
-      title: 'Portrett',
-      type: 'figure'
     },
     {
       name: 'cv',

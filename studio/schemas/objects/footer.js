@@ -13,16 +13,6 @@ export default {
       name: 'address',
       title: 'Adresse',
       type: 'simplePortableText'
-    },
-    {
-      name: 'credits',
-      title: 'Credits',
-      type: 'simplePortableText'
-    },
-    {
-      name: 'color',
-      type: 'color',
-      title: 'Bakgrunnsfarge'
     }
   ]
 }

@@ -1,7 +1,6 @@
 <template>
   <Layout>
     <section class="studio">
-      <h1>{{ $page.about.title }}</h1>
       <p class="lead">{{ $page.about.lead }}</p>
     </section>
     <section class="bio">
@@ -69,7 +68,7 @@ export default {
 
 <style lang="scss" scoped>
 .studio {
-  padding: 8rem 4rem;
+  padding: 10rem 4rem;
 }
 .lead {
   font-size: 2rem;

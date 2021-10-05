@@ -8,6 +8,7 @@
           :src="$urlForImage($page.project.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
         />
         <h1 class="project-title">{{ $page.project.title }}</h1>
+        <p class="lead">{{ $page.project.lead }}</p>
       </header>
 
       <div class="project-content">
@@ -19,6 +20,10 @@
       </div>
 
       <div class="project-details" v-if="$page.project.projectDetails">
+        <div class="project-categories">
+          <span>Type</span>
+          <p v-if="$page.project.categories.length">{{ $page.project.categories[0].title }}</p>
+        </div>
         <div class="project-year">
           <span>År</span>
           <p>{{ $page.project.publishedAt }}</p>
@@ -105,6 +110,7 @@ query project ($id: ID!) {
   project: sanityProject (id: $id) {
     title
     publishedAt (format: "YYYY")
+    lead
     projectDetails {
       client
       location
@@ -219,8 +225,6 @@ export default {
     img {
       display: block;
       width: 100%;
-      max-width: 48rem;
-      margin: 2rem auto;
     }
   }
   &-title {

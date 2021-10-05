@@ -7,13 +7,13 @@
 html {
 	min-height: 100%;
 	font-size: calc(16px + 6*(100vw - 320px)/1600);
-  scroll-behavior: smooth;
 }
 
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  line-height: 1.42;
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-main);
@@ -25,14 +25,22 @@ a {
   text-decoration: none;
 }
 
-p {
-  font-family: var(--font-body);
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-weight: inherit;
 }
 
 img {
   max-width: 100%;
+}
+
+p {
+  &.lead {
+    font-size: 2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    width: 36rem;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
 }

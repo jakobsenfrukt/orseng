@@ -29,14 +29,14 @@ export default {
       type: 'datetime'
     },
     {
-      title: 'Vis på forsiden',
-      name: 'featured',
-      type: 'boolean'
+      name: 'lead',
+      title: 'Ingress',
+      type: 'text'
     },
     {
-      name: 'client',
-      title: 'Kunde',
-      type: 'string'
+      title: 'Prosjektdetaljer',
+      name: 'projectDetails',
+      type: 'projectDetails'
     },
     {
       name: 'description',

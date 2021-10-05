@@ -4,15 +4,13 @@
       <g-image
         v-if="project.mainImage"
         class="project-image"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).height(800).width(800).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).height(600).width(800).auto('format').url()"
         :alt="project.mainImage.alt"
       />
     </div>
     <div class="project-text">
-      <div v-if="project.categories.length">{{ project.categories[0].title }}</div>
       <h3 class="project-title">{{ project.title }}</h3>
-      <!--<div class="project-lead" v-if="project._rawLead"><block-content :blocks="project._rawLead" /></div>-->
-      <block-content :blocks="project._rawDescription" />
+      <p class="project-lead" v-if="project.lead">{{ project.lead }}</p>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`">Link</g-link>
   </article>
@@ -48,19 +46,22 @@ export default {
   position: relative;
   border-radius: calc(var(--radius)/3);
   transition: all .2s ease-in-out;
-  
+  margin: 0 auto 4rem;
+  width: 100%;
+  max-width: 900px;
   &-image {
     width: 100%;
   }
   &-text {
-    padding-top: .2rem;
+    max-width: 30rem;
   }
   &-title {
     font-size: 1.8rem;
-    margin-bottom: .6rem;
+    margin: .6rem 0;
   }
   &-lead {
     font-size: 1rem;
+    margin: 0;
   }
   &-link {
     position: absolute;

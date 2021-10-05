@@ -18,6 +18,8 @@ import figureTwoColumn from './objects/figureTwoColumn'
 import simplePortableText from './objects/simplePortableText'
 import colorPalette from './objects/colorPalette'
 import footer from './objects/footer'
+import bio from './objects/bio'
+import projectDetails from './objects/projectDetails'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,6 +36,8 @@ export default createSchema({
     simplePortableText,
     colorPalette,
     footer,
+    bio,
+    projectDetails,
     // The following are document types which will appear in the studio.
     siteSettings,
     category,
