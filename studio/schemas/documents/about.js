@@ -19,14 +19,16 @@ export default {
       type: 'bio'
     },
     {
-      name: 'clients',
-      title: 'Kunder',
-      type: 'simplePortableText'
+      name: 'services',
+      title: 'Kompetanseområder',
+      type: 'array',
+      of: [{type: 'string'}]
     },
     {
-      name: 'cv',
-      title: 'CV',
-      type: 'file'
+      name: 'clients',
+      title: 'Kunder',
+      type: 'array',
+      of: [{type: 'string'}]
     }
   ]
 }

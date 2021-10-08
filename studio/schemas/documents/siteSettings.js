@@ -10,10 +10,10 @@ export default {
       description: 'Beskrivelse som dukker opp i søkemotorer og sosiale medier.'
     },
     {
-      name: 'footer',
-      type: 'footer',
-      title: 'Footer',
-      validation: Rule => Rule.error('Mangler footer-info!').required()
+      name: 'contact',
+      type: 'contact',
+      title: 'Kontakt',
+      validation: Rule => Rule.error('Mangler kontaktinfo!').required()
     },
     {
       name: 'ogimg',

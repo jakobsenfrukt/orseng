@@ -5,10 +5,10 @@
         <img
           v-if="$page.project.mainImage"
           :alt="$page.project.mainImage.alt"
-          :src="$urlForImage($page.project.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
+          :src="$urlForImage($page.project.mainImage, $page.metadata.sanityOptions).width(1600).auto('format').url()"
         />
         <h1 class="project-title">{{ $page.project.title }}</h1>
-        <p class="lead">{{ $page.project.lead }}</p>
+        <p class="lead" v-if="$page.project.lead">{{ $page.project.lead }}</p>
       </header>
 
       <div class="project-content">
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div class="project-gallery">
+      <div class="project-gallery" v-if="$page.project.gallery.length">
         <div v-for="(item, index) in $page.project.gallery" :key="`content-${index}`">
           <div v-if="item._type === 'figure'" class="onecolumn">
             <img
@@ -85,10 +85,9 @@
       <div class="related">
         <div class="related-heading">
           <h2>Relaterte prosjekter</h2>
-          <div>&rarr; <g-link to="/prosjekter">Se alle prosjekter</g-link></div>
         </div>
         <div class="related-grid">
-          <PostItem
+          <ProjectItem
             v-for="(project, index) in $page.project.relatedProjects"
             :key="`related-${index}`"
             :project="project"
@@ -198,10 +197,12 @@ query project ($id: ID!) {
 
 <script>
 import BlockContent from '~/components/BlockContent'
+import ProjectItem from '~/components/projects/ProjectItem'
 
 export default {
   components: {
-    BlockContent
+    BlockContent,
+    ProjectItem
   },
   metaInfo() {
     return {
@@ -209,7 +210,7 @@ export default {
       meta: [
         {
           name: 'description',
-          content: this.$page.project.description
+          content: this.$page.project.lead ? this.$page.project.lead : ' '
         }
       ]
     }
@@ -304,52 +305,30 @@ export default {
 .related-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  column-gap: 1rem;
+  margin-bottom: 1.5rem;
   h2 {
     margin: 0;
+    font-size: var(--font-m);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+  }
+  &:before, &:after {
+    content: " ";
+    display: block;
+    flex: 1;
+    align-self: center;
+    height: var(--border-width);
+    background: currentColor;
   }
 }
 .related-grid {
   display: grid;
-  grid-gap: var(--spacing-m);
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   .project {
     margin: 0;
-  }
-}
-@media (max-width: 1000px) {
-  .related-grid {
-    grid-template-columns: repeat(8, 1fr);
-  }
-}
-@media (max-width: 700px) {
-  .project {
-    &-gallery {
-      .twocolumn {
-        grid-template-columns: 1fr;
-      }
-    }
-  }
-  .related-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .related-heading {
-    display: block;
-    h2 {
-      margin-bottom: 1rem;
-    }
-  }
-}
-@media (max-width: 640px) {
-  .project {
-    &-title {
-      padding: 2rem 6rem 0;
-      font-size: 2rem;
-    }
-    &-lead, &-content {
-      padding: 0 2rem;
-    }
   }
 }
 </style>

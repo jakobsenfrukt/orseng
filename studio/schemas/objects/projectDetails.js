@@ -16,7 +16,8 @@ export default {
     {
       name: 'collaborators',
       title: 'Samarbeidspartnere',
-      type: 'string'
+      type: 'array',
+      of: [{type: 'string'}]
     },
     {
       name: 'photographer',

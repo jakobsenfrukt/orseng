@@ -6,11 +6,18 @@
   --font-main: 'europa', serif;
   --font-display: 'kings-caslon-display', serif;
 
+  --font-m: 1.2rem;
+  --font-l: 3rem;
+  --font-xl: 6rem;
+
+  --letter-spacing: .05em;
+
   // colors
   --color-black: #000;
   --color-white: #fff;
 
   --site-padding: 1rem;
+  --border-width: .18rem;
 }
 
 body {
@@ -22,4 +29,10 @@ body {
 body[data-theme="dark"] {
   --color-background: var(--color-black);
   --color-text: var(--color-white);
+}
+
+@media (max-width: 800px) {
+  :root {
+    --site-padding: .5rem;
+  }
 }

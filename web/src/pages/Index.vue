@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <section class="hero">
-      <div class="hero-image">
+      <!--<div class="hero-image">
         <img src="/assets/images/wexwork03.jpg" />
-        <!--<div class="overlay overlay-top"></div>
-        <div class="overlay overlay-bottom"></div>-->
-      </div>
+        <div class="overlay overlay-top"></div>
+        <div class="overlay overlay-bottom"></div>
+      </div>-->
       <div class="hero-text">
         <p class="lead">Ørseng Interiørarkitektur leverer komplette interiørløsninger fra idé til ferdigstillelse, for offentlig og privat miljø.</p>
       </div>
@@ -32,17 +32,13 @@ export default {
 
 <style lang="scss" scoped>
 .hero {
+  padding-top: 7rem;
   &-image {
-    width: 100%;
-    height: 90vh;
-    padding-top: 8rem;
     position: relative;
     img {
       width: 100%;
-      object-fit: cover;
-      height: 90vh;
     }
-    .overlay {
+    /*.overlay {
       background: linear-gradient(transparent, var(--color-background));
       height: 16%;
       position: absolute;
@@ -56,12 +52,10 @@ export default {
         background: linear-gradient(transparent, var(--color-background));
         bottom: 0;
       }
-    }
+    }*/
   }
   &-text {
     position: relative;
-    //margin-top: -6%;
-    margin-top: 8rem;
     padding: 2rem;
     .lead {
       font-size: 2rem;
