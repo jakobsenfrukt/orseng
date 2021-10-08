@@ -71,6 +71,11 @@ export default {
       ]
     },
     {
+      name: 'themePalette',
+      title: 'Fargepalett',
+      type: 'themePalette'
+    },
+    {
       name: 'relatedProjects',
       title: 'Lignende prosjekter',
       type: 'array',

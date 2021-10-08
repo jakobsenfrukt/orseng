@@ -78,12 +78,12 @@ export default {
       text-transform: uppercase;
       letter-spacing: var(--letter-spacing);
     }
-    &-link, &-text {
+    /*&-link, &-text {
       font-family: var(--font-display);
       font-size: 2rem;
       font-weight: 300;
       font-style: italic;
-    }
+    }*/
   }
 }
 </style>

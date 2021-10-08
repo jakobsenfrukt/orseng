@@ -1,6 +1,10 @@
 <template>
   <header class="site-header" :class="{open: menuOpen}">
 
+    <div class="overlay-wrapper">
+      <div class="overlay overlay-light"></div>
+      <div class="overlay overlay-dark"></div>
+    </div>
     <nav class="nav nav-main nav-left">
       <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
       <g-link class="nav-link" to="/">Prosjekter</g-link>
@@ -65,6 +69,45 @@ export default {
   width: 100%;
 }
 
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity .6s linear;
+
+  &-light {
+    background: linear-gradient(var(--color-background-light), transparent);
+    opacity: 1;
+  }
+  &-dark {
+    background: linear-gradient(var(--color-background-dark), transparent);
+    opacity: 0;
+  }
+
+  &-wrapper {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 8rem;
+  }
+}
+body[data-theme="dark"] {
+ 	.overlay-dark {
+    opacity: 1;
+  }
+  .overlay-light {
+    opacity: 0;
+  }
+}
+
 .logo {
   width: 100%;
   height: 6rem;
@@ -77,6 +120,8 @@ export default {
 }
 
 .nav {
+  position: relative;
+  z-index: 10;
   &-main {
     display: flex;
     align-items: center;

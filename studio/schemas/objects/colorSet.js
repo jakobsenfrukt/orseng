@@ -1,17 +1,17 @@
 export default {
-  name: 'colorPalette',
+  name: 'colorSet',
   type: 'object',
-  title: 'Color palette',
+  title: 'Color set',
   fields: [
     {
       name: 'bgColor',
       type: 'color',
-      title: 'Background color'
+      title: 'Bakgrunnsfarge'
     },
     {
       name: 'textColor',
       type: 'color',
-      title: 'Text color'
+      title: 'Tekstfarge'
     },
   ]
 }

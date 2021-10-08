@@ -17,7 +17,7 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-main);
-  transition: color .4s ease-in, background-color .4s ease-in;
+  transition: color .5s linear, background-color .5s linear;
 }
 
 a {

@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :palette="$page.project.themePalette">
     <div class="project">
       <header class="project-header">
         <img
@@ -139,6 +139,40 @@ query project ($id: ID!) {
         bottom
         left
         right
+      }
+    }
+    themePalette {
+      light {
+        bgColor {
+          rgb {
+            r
+            g
+            b
+          }
+        }
+        textColor {
+          rgb {
+            r
+            g
+            b
+          }
+        }
+      }
+      dark {
+        bgColor {
+          rgb {
+            r
+            g
+            b
+          }
+        }
+        textColor {
+          rgb {
+            r
+            g
+            b
+          }
+        }
       }
     }
     relatedProjects {
@@ -300,7 +334,7 @@ export default {
 }
 .related {
   margin: 6rem auto;
-  max-width: 1000px;
+  padding: 0 3rem;
 }
 .related-heading {
   display: flex;
@@ -326,7 +360,7 @@ export default {
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   .project {
     margin: 0;
   }
