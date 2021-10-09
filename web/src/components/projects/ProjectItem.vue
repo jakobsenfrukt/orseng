@@ -11,6 +11,7 @@
     <div class="project-text">
       <h3 class="project-title">{{ project.title }}</h3>
       <p class="project-lead" v-if="project.lead">{{ project.lead }}</p>
+      <div class="project-arrow"></div>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`">Link</g-link>
   </article>
@@ -42,27 +43,44 @@ export default {
 
 <style lang="scss" scoped>
 .project {
-  display: block;
   position: relative;
   border-radius: calc(var(--radius)/3);
   transition: all .2s ease-in-out;
-  margin: 0 auto 4rem;
+  margin: 0 auto 5rem;
   width: 100%;
   max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   &-image {
     width: 100%;
   }
   &-text {
+    text-align: center;
+    width: 100%;
+  }
+  &-title, &-lead {
     max-width: 30rem;
   }
   &-title {
-    font-size: 1.8rem;
-    margin: .6rem 0;
+    font-size: var(--font-m);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    margin: .6rem auto;
   }
   &-lead {
     font-size: 1rem;
-    margin: 0;
+    margin: 0 auto;
   }
+  /*&-arrow {
+    width: 2rem;
+    height: var(--border-width);
+    background: var(--color-text);
+    margin: 2rem auto;
+  }*/
   &-link {
     position: absolute;
     top: 0;

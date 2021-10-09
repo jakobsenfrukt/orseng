@@ -1,22 +1,30 @@
 <template>
   <footer class="site-footer" id="kontakt">
+    <h2 class="contact-heading">Kontakt</h2>
     <div class="contact-grid">
       <div>
-        <h2 class="contact-label">Kontakt</h2>
+        <h3 class="contact-label">Kontakt</h3>
         <a class="contact-link" :href="`tel:${$static.settings.contact.phone}`" target="_blank">{{$static.settings.contact.phone}}</a><br />
         <a class="contact-link" :href="`mailto:${$static.settings.contact.email}`" target="_blank">{{$static.settings.contact.email}}</a><br />
       </div>
       <div>
-        <h2 class="contact-label">Adresse</h2>
-        <block-content :blocks="$static.settings.contact._rawAddress" class="contact-text" />
-        <a class="contact-link" :href="$static.settings.contact.maplink" target="_blank">Se i kart</a><br />
-      </div>
-      <div>
-        <h2 class="contact-label">Sosiale medier</h2>
+        <h3 class="contact-label">Sosiale medier</h3>
         <a class="contact-link" :href="$static.settings.contact.instagram" target="_blank">Instagram</a><br />
         <a class="contact-link" :href="$static.settings.contact.facebook" target="_blank">Facebook</a><br />
         <a class="contact-link" :href="$static.settings.contact.linkedin" target="_blank">Linkedin</a><br />
       </div>
+      <div>
+        <h3 class="contact-label">Adresse</h3>
+        <block-content :blocks="$static.settings.contact._rawAddress" class="contact-text" />
+        <a class="contact-link" :href="$static.settings.contact.maplink" target="_blank">Se i kart</a><br />
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div class="toplink">
+        <span role="button" @click="toTop()">Til toppen</span>
+      </div>
+      <ToggleTheme class="theme" />
+      <div class="credits">Nettside av <a href="https://jakobsenfrukt.no">JF&amp;G</a></div>
     </div>
   </footer>
 </template>
@@ -45,30 +53,46 @@ query {
 
 <script>
 import BlockContent from '@/components/BlockContent.vue'
+import ToggleTheme from '~/components/ToggleTheme.vue'
 
 export default {
   components: {
-    BlockContent
+    BlockContent,
+    ToggleTheme
+  },
+  methods: {
+    toTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .site-footer {
-  text-align: center;
   min-height: 100vh;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 6rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  position: relative;
 
   .contact {
+    &-heading {
+      padding: 0 1rem;
+      font-family: var(--font-display);
+      font-size: var(--font-xl);
+      margin: 2rem 0;
+    }
     &-grid {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       align-items: flex-start;
+      padding: 0 1rem 4rem;
     }
     &-label {
       margin: 0 auto 2rem;
@@ -77,13 +101,44 @@ export default {
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: var(--letter-spacing);
+
+      display: none;
     }
-    /*&-link, &-text {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 300;
-      font-style: italic;
-    }*/
+  }
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--site-padding);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem;
+
+  font-family: var(--font-main);
+  font-size: var(--font-s);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+.credits {
+  order: 1;
+  text-align: left;
+}
+.theme {
+  order: 2;
+}
+.toplink {
+  order: 3;
+  text-align: right;
+
+  span {
+    display: inline-block;
+    cursor: pointer;
   }
 }
 </style>

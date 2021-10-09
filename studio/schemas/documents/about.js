@@ -14,9 +14,9 @@ export default {
       type: 'text'
     },
     {
-      name: 'bio',
-      title: 'Bio',
-      type: 'bio'
+      name: 'studio',
+      title: 'Om studioet',
+      type: 'studio'
     },
     {
       name: 'services',
@@ -29,6 +29,11 @@ export default {
       title: 'Kunder',
       type: 'array',
       of: [{type: 'string'}]
+    },
+    {
+      name: 'bio',
+      title: 'Om meg',
+      type: 'bio'
     }
   ]
 }

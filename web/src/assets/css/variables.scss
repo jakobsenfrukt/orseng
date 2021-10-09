@@ -4,20 +4,23 @@
 
 :root {
   --font-main: 'europa', serif;
-  --font-display: 'kings-caslon-display', serif;
+  --font-display: 'ivypresto-display', serif;
 
-  --font-m: 1.3rem;
-  --font-l: 3rem;
+  --font-xs: .8rem;
+  --font-s: 1.1rem;
+  --font-m: 1.8rem;
+  --font-l: 2.8rem;
   --font-xl: 6rem;
 
-  --letter-spacing: .05em;
+  --letter-spacing: .08em;
 
   --site-padding: 1rem;
-  --border-width: .15rem;
+  --border-width: 3px;
+  --border-width-thin: 1px;
 
   // colors
-  --color-black: #000;
-  --color-white: #fff;
+  --color-black: rgb(18, 15, 20);
+  --color-white: rgb(245, 243, 236);
 }
 
 body {

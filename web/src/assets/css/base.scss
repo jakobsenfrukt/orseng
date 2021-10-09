@@ -34,13 +34,14 @@ img {
 }
 
 p {
+  margin: 0 0 1.5rem;
   &.lead {
-    font-size: 2rem;
+    font-size: var(--font-l);
     font-family: var(--font-display);
+    font-weight: 200;
     font-style: italic;
-    width: 36rem;
-    max-width: 100%;
-    margin: 0 auto 2rem;
+    max-width: 52rem;
+    margin: 0 auto 3rem;
     text-align: center;
   }
   &.contact-text {

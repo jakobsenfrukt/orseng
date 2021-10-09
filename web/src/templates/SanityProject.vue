@@ -38,7 +38,11 @@
         </div>
         <div class="project-collaborators" v-if="$page.project.projectDetails.collaborators">
           <span>Samarbeidspartnere</span>
-          <p>{{ $page.project.projectDetails.collaborators }}</p>
+          <ul class="project-collaborators-list">
+            <li v-for="(collaborator, index) in $page.project.projectDetails.collaborators" :key="index">
+              {{ collaborator }}
+            </li>
+          </ul>
         </div>
         <div class="project-photographer" v-if="$page.project.projectDetails.photographer">
           <span>Fotograf</span>
@@ -82,7 +86,7 @@
           </div>
         </div>
       </div>
-      <div class="related">
+      <div class="related" v-if="$page.project.relatedProjects.length">
         <div class="related-heading">
           <h2>Relaterte prosjekter</h2>
         </div>
@@ -264,7 +268,8 @@ export default {
   }
   &-title {
     text-transform: none;
-    font-size: 3rem;
+    font-size: var(--font-l);
+    font-weight: 600;
     text-align: center;
     max-width: 44rem;
     margin: 2rem auto;
@@ -272,7 +277,6 @@ export default {
   }
   &-lead {
     margin: 3rem auto;
-    font-size: 1.8rem;
   }
 
   &-content {
@@ -292,18 +296,30 @@ export default {
 
   &-details {
     font-family: var(--font-body);
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
     max-width: 38rem;
     margin: 2rem auto 5rem;
 
     span {
       display: block;
-      font-weight: bold;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: var(--font-xs);
+      letter-spacing: var(--letter-spacing);
       color: rgb(184, 111, 43);
     }
     p {
       margin: 0;
+    }
+  }
+  &-collaborators {
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
   }
   &-gallery {
@@ -343,7 +359,7 @@ export default {
   margin-bottom: 1.5rem;
   h2 {
     margin: 0;
-    font-size: var(--font-m);
+    font-size: var(--font-s);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
@@ -355,6 +371,7 @@ export default {
     align-self: center;
     height: var(--border-width);
     background: currentColor;
+    opacity: .2;
   }
 }
 .related-grid {

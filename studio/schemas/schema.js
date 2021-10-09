@@ -19,6 +19,7 @@ import simplePortableText from './objects/simplePortableText'
 import colorSet from './objects/colorSet'
 import themePalette from './objects/themePalette'
 import bio from './objects/bio'
+import studio from './objects/studio'
 import contact from './objects/contact'
 import projectDetails from './objects/projectDetails'
 
@@ -38,6 +39,7 @@ export default createSchema({
     colorSet,
     themePalette,
     bio,
+    studio,
     contact,
     projectDetails,
     // The following are document types which will appear in the studio.

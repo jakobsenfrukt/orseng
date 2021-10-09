@@ -1,7 +1,11 @@
 <template>
   <div class="layout" :style="cssVars">
     <Header />
-    <slot/>
+    <transition name="fade" appear>
+      <main class="site-main">
+        <slot/>
+      </main>
+    </transition>
     <Footer />
   </div>
 </template>
@@ -58,5 +62,12 @@ body[data-theme="dark"] {
     color: var(--color-text-dark);
     background: var(--color-background-dark);
   }
+}
+.fade-enter-active {
+  transition: opacity 1s;
+}
+
+.fade-enter {
+  opacity: 0;
 }
 </style>

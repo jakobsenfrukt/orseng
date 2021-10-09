@@ -74,5 +74,6 @@ export default {
   grid-template-columns: 1fr;
   gap: var(--site-padding);
   padding: var(--site-padding);
+  margin: 0 auto 3rem;
 }
 </style>

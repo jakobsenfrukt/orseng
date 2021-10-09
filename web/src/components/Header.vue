@@ -16,7 +16,6 @@
     <nav class="nav nav-main nav-right">
       <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
       <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
-      <ToggleTheme />
     </nav>
 
     <nav class="nav-mobile">
@@ -32,13 +31,11 @@
 <script>
 import Logo from '@/components/graphics/logo/Logo.vue'
 import MenuIcon from '@/components/graphics/icons/MenuIcon.vue'
-import ToggleTheme from '~/components/ToggleTheme.vue'
 
 export default {
   components: {
     Logo,
-    MenuIcon,
-    ToggleTheme
+    MenuIcon
   },
   data() {
     return {
@@ -110,7 +107,7 @@ body[data-theme="dark"] {
 
 .logo {
   width: 100%;
-  height: 6rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +128,7 @@ body[data-theme="dark"] {
   &-link {
     font-family: var(--font-main);
     font-weight: 600;
-    font-size: var(--font-m);
+    font-size: var(--font-s);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     cursor: pointer;
@@ -179,7 +176,7 @@ body[data-theme="dark"] {
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .nav {
     &-main {
       .nav-link {

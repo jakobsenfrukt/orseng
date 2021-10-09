@@ -56,13 +56,15 @@ export default {
   }
   &-text {
     position: relative;
-    padding: 2rem;
+    padding: 4rem 2rem;
     .lead {
-      font-size: 2rem;
+      font-size: 3rem;
       font-family: var(--font-display);
       font-style: italic;
-      width: 36rem;
-      max-width: 100%;
+      font-weight: 200;
+      max-width: 72rem;
+      width: 100%;
+      line-height: 1.4;
       margin: 0 auto;
       text-align: center;
     }
