@@ -114,6 +114,7 @@ export default {
   &-image {
     height: 100vh;
     animation: zoomIn 2s ease forwards;
+    background: var(--color-black);
     &-item {
       position: absolute;
       width: 100%;
