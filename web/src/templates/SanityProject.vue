@@ -1,17 +1,10 @@
 <template>
   <Layout :palette="$page.project.themePalette">
     <div class="project">
-      <header class="project-header">
-        <img
-          v-if="$page.project.mainImage"
-          :alt="$page.project.mainImage.alt"
-          :src="$urlForImage($page.project.mainImage, $page.metadata.sanityOptions).width(1600).auto('format').url()"
-        />
-        <h1 class="project-title">{{ $page.project.title }}</h1>
-        <p class="lead" v-if="$page.project.lead">{{ $page.project.lead }}</p>
-      </header>
+      <ProjectHero :project="$page.project" />
 
       <div class="project-content">
+        <p class="lead" v-if="$page.project.lead">{{ $page.project.lead }}</p>
         <block-content
           :blocks="$page.project._rawDescription"
           v-if="$page.project._rawDescription"
@@ -234,11 +227,13 @@ query project ($id: ID!) {
 </page-query>
 
 <script>
+import ProjectHero from '~/components/projects/ProjectHero'
 import BlockContent from '~/components/BlockContent'
 import ProjectItem from '~/components/projects/ProjectItem'
 
 export default {
   components: {
+    ProjectHero,
     BlockContent,
     ProjectItem
   },
@@ -259,22 +254,7 @@ export default {
 <style lang="scss" scoped>
 .project {
   margin-bottom: 7rem;
-  
-  &-header {
-    img {
-      display: block;
-      width: 100%;
-    }
-  }
-  &-title {
-    text-transform: none;
-    font-size: var(--font-l);
-    font-weight: 600;
-    text-align: center;
-    max-width: 44rem;
-    margin: 2rem auto;
-    padding: 0 2rem;
-  }
+
   &-lead {
     margin: 3rem auto;
   }
@@ -282,7 +262,6 @@ export default {
   &-content {
     display: flex;
     justify-content: center;
-    max-width: 38rem;
     margin: 0 auto;
     font-size: 1.2rem;
     

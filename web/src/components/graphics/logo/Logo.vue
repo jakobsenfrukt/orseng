@@ -14,5 +14,6 @@
 .logo {
   width: 100%;
   fill: currentColor;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .7));
 }
 </style>

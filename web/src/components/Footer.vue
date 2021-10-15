@@ -1,22 +1,22 @@
 <template>
   <footer class="site-footer" id="kontakt">
-    <h2 class="contact-heading">Kontakt</h2>
+    <h2 class="contact-heading">{{$static.contact.title}}</h2>
     <div class="contact-grid">
       <div>
         <h3 class="contact-label">Kontakt</h3>
-        <a class="contact-link" :href="`tel:${$static.settings.contact.phone}`" target="_blank">{{$static.settings.contact.phone}}</a><br />
-        <a class="contact-link" :href="`mailto:${$static.settings.contact.email}`" target="_blank">{{$static.settings.contact.email}}</a><br />
+        <a class="contact-link" :href="`tel:${$static.contact.phone}`" target="_blank">{{$static.contact.phone}}</a><br />
+        <a class="contact-link" :href="`mailto:${$static.contact.email}`" target="_blank">{{$static.contact.email}}</a><br />
       </div>
       <div>
         <h3 class="contact-label">Sosiale medier</h3>
-        <a class="contact-link" :href="$static.settings.contact.instagram" target="_blank">Instagram</a><br />
-        <a class="contact-link" :href="$static.settings.contact.facebook" target="_blank">Facebook</a><br />
-        <a class="contact-link" :href="$static.settings.contact.linkedin" target="_blank">Linkedin</a><br />
+        <a class="contact-link" :href="$static.contact.instagram" target="_blank">Instagram</a><br />
+        <a class="contact-link" :href="$static.contact.facebook" target="_blank">Facebook</a><br />
+        <a class="contact-link" :href="$static.contact.linkedin" target="_blank">Linkedin</a><br />
       </div>
       <div>
         <h3 class="contact-label">Adresse</h3>
-        <block-content :blocks="$static.settings.contact._rawAddress" class="contact-text" />
-        <a class="contact-link" :href="$static.settings.contact.maplink" target="_blank">Se i kart</a><br />
+        <block-content :blocks="$static.contact._rawAddress" class="contact-text" />
+        <a class="contact-link" :href="$static.contact.maplink" target="_blank">Se i kart</a><br />
       </div>
     </div>
     <div class="footer-grid">
@@ -37,16 +37,15 @@ query {
       dataset
     }
   }
-  settings: sanitySiteSettings(id: "siteSettings") {
-    contact {
-      phone
-      email
-      instagram
-      facebook
-      linkedin
-      _rawAddress
-      maplink
-    }
+  contact: sanityContact(id: "contact") {
+    title
+    phone
+    email
+    instagram
+    facebook
+    linkedin
+    _rawAddress
+    maplink
   }
 }
 </static-query>
@@ -84,7 +83,7 @@ export default {
     &-heading {
       padding: 0 1rem;
       font-family: var(--font-display);
-      font-size: var(--font-xl);
+      font-size: var(--font-xxl);
       margin: 2rem 0;
     }
     &-grid {

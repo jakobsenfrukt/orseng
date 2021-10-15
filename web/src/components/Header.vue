@@ -1,10 +1,5 @@
 <template>
   <header class="site-header" :class="{open: menuOpen}">
-
-    <div class="overlay-wrapper">
-      <div class="overlay overlay-light"></div>
-      <div class="overlay overlay-dark"></div>
-    </div>
     <nav class="nav nav-main nav-left">
       <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
       <g-link class="nav-link" to="/">Prosjekter</g-link>
@@ -61,53 +56,16 @@ export default {
   justify-content: center;
   align-items: center;
   padding: var(--site-padding);
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   width: 100%;
-}
-
-.overlay {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  transition: opacity .6s linear;
-
-  &-light {
-    background: linear-gradient(var(--color-background-light), transparent);
-    opacity: 1;
-  }
-  &-dark {
-    background: linear-gradient(var(--color-background-dark), transparent);
-    opacity: 0;
-  }
-
-  &-wrapper {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 8rem;
-  }
-}
-body[data-theme="dark"] {
- 	.overlay-dark {
-    opacity: 1;
-  }
-  .overlay-light {
-    opacity: 0;
-  }
+  color: var(--color-white);
+  //animation: fadeDown 1s ease forwards;
 }
 
 .logo {
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,16 +80,37 @@ body[data-theme="dark"] {
   &-main {
     display: flex;
     align-items: center;
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
   &-link {
+    display: inline-block;
+    position: relative;
     font-family: var(--font-main);
     font-weight: 600;
     font-size: var(--font-s);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -.1em;
+      left: 0;
+      height: var(--border-width);
+      width: 0;
+      background: currentColor;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+      transition: width .3s ease;
+    }
+    &:hover {
+      &:after {
+        width: 100%;
+        transition: width .36s ease;
+      }
+    }
   }
 
   &-left {
@@ -217,6 +196,16 @@ body[data-theme="dark"] {
   }
 }
 @keyframes menuItemEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeDown {
   from {
     opacity: 0;
     transform: translateY(-100%);

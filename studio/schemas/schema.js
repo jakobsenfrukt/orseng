@@ -9,6 +9,8 @@ import siteSettings from './documents/siteSettings'
 import category from './documents/category'
 import project from './documents/project'
 import about from './documents/about'
+import frontpage from './documents/frontpage'
+import contact from './documents/contact'
 
 // Object types
 import source from './objects/source'
@@ -20,7 +22,6 @@ import colorSet from './objects/colorSet'
 import themePalette from './objects/themePalette'
 import bio from './objects/bio'
 import studio from './objects/studio'
-import contact from './objects/contact'
 import projectDetails from './objects/projectDetails'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -40,12 +41,13 @@ export default createSchema({
     themePalette,
     bio,
     studio,
-    contact,
     projectDetails,
     // The following are document types which will appear in the studio.
     siteSettings,
     category,
     project,
-    about
+    about,
+    frontpage,
+    contact
   ]),
 })

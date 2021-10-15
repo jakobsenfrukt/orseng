@@ -13,5 +13,10 @@ export default {
       type: 'color',
       title: 'Tekstfarge'
     },
+    {
+      name: 'detailColor',
+      type: 'color',
+      title: 'Detaljfarge'
+    }
   ]
 }

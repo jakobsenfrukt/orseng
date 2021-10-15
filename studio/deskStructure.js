@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 
 const hiddenDocTypes = listItem =>
-  !['category', 'project', 'siteSettings', 'about'].includes(listItem.getId())
+  !['category', 'project', 'siteSettings', 'about', 'frontpage', 'contact'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -15,6 +15,15 @@ export default () =>
             .schemaType('siteSettings')
             .documentId('siteSettings')
             .title('Generelt')
+        ),
+      S.listItem()
+        .title('Forside')
+        .child(
+          S.editor()
+            .id('frontpage')
+            .schemaType('frontpage')
+            .documentId('frontpage')
+            .title('Forside')
         ),
       S.listItem()
         .title('Prosjekter')
@@ -32,6 +41,15 @@ export default () =>
             .schemaType('about')
             .documentId('about')
             .title('Om')
+        ),
+      S.listItem()
+        .title('Kontakt')
+        .child(
+          S.editor()
+            .id('contact')
+            .schemaType('contact')
+            .documentId('contact')
+            .title('Kontakt')
         ),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have

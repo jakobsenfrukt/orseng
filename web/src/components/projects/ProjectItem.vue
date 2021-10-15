@@ -48,7 +48,7 @@ export default {
   transition: all .2s ease-in-out;
   margin: 0 auto 5rem;
   width: 100%;
-  max-width: 900px;
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -61,19 +61,17 @@ export default {
     text-align: center;
     width: 100%;
   }
-  &-title, &-lead {
-    max-width: 30rem;
-  }
   &-title {
-    font-size: var(--font-m);
-    font-weight: 600;
+    font-size: var(--font-xl);
+    font-family: var(--font-display);
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: var(--letter-spacing);
-    margin: .6rem auto;
+    margin: 0 auto;
   }
   &-lead {
     font-size: 1rem;
     margin: 0 auto;
+    max-width: 30rem;
   }
   /*&-arrow {
     width: 2rem;
