@@ -1,6 +1,7 @@
 <template>
   <div class="layout" :style="cssVars">
     <Header />
+    <MiniHeader />
     <transition name="fade" appear>
       <main class="site-main">
         <slot/>
@@ -20,11 +21,13 @@ query {
 
 <script>
 import Header from '~/components/Header.vue'
+import MiniHeader from '~/components/MiniHeader.vue'
 import Footer from '~/components/Footer.vue'
 
 export default {
   components: {
     Header,
+    MiniHeader,
     Footer
   },
   props: {

@@ -84,7 +84,7 @@
           <h2>Relaterte prosjekter</h2>
         </div>
         <div class="related-grid">
-          <ProjectItem
+          <RelatedProjectItem
             v-for="(project, index) in $page.project.relatedProjects"
             :key="`related-${index}`"
             :project="project"
@@ -229,13 +229,13 @@ query project ($id: ID!) {
 <script>
 import ProjectHero from '~/components/projects/ProjectHero'
 import BlockContent from '~/components/BlockContent'
-import ProjectItem from '~/components/projects/ProjectItem'
+import RelatedProjectItem from '~/components/projects/RelatedProjectItem'
 
 export default {
   components: {
     ProjectHero,
     BlockContent,
-    ProjectItem
+    RelatedProjectItem
   },
   metaInfo() {
     return {

@@ -1,40 +1,50 @@
 <template>
-  <header class="site-header" :class="{open: menuOpen}">
-    <nav class="nav nav-main nav-left">
-      <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
-      <g-link class="nav-link" to="/">Prosjekter</g-link>
-      <g-link class="nav-link" to="/studio">Studio</g-link>
-    </nav>
-    <g-link class="logo" to="/">
-      <Logo />
-    </g-link>
-    <nav class="nav nav-main nav-right">
-      <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
-      <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
-    </nav>
+  <header class="site-header-wrapper" :class="{open: menuOpen}">
+    <div class="site-header mini" :class="{inview: isInView}">
+      <nav class="nav nav-main nav-left">
+        <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
+        <g-link class="nav-link" to="/">Prosjekter</g-link>
+        <g-link class="nav-link" to="/studio">Studio</g-link>
+      </nav>
+      <g-link class="logo" to="/">
+        <MiniLogo />
+      </g-link>
+      <nav class="nav nav-main nav-right">
+        <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
+        <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+      </nav>
 
-    <nav class="nav-mobile">
-      <g-link class="nav-link" to="/">Prosjekter</g-link>
-      <g-link class="nav-link" to="/studio">Studio</g-link>
-      <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
-      <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
-    </nav>
+      <nav class="nav-mobile">
+        <g-link class="nav-link" to="/">Prosjekter</g-link>
+        <g-link class="nav-link" to="/studio">Studio</g-link>
+        <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
+        <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+      </nav>
+    </div>
 
+    <IntersectionObserver
+      id="observer"
+      class="observer"
+      @on-enter-viewport="onEnterViewport"
+    ></IntersectionObserver>
   </header>
 </template>
 
 <script>
-import Logo from '@/components/graphics/logo/Logo.vue'
+import MiniLogo from '@/components/graphics/logo/MiniLogo.vue'
 import MenuIcon from '@/components/graphics/icons/MenuIcon.vue'
+import IntersectionObserver from '~/components/tools/IntersectionObserver'
 
 export default {
   components: {
-    Logo,
-    MenuIcon
+    MiniLogo,
+    MenuIcon,
+    IntersectionObserver
   },
   data() {
     return {
-      menuOpen: false
+      menuOpen: false,
+      isInView: false
     }
   },
   methods: {
@@ -44,6 +54,9 @@ export default {
       })
       // close menu if on mobile
       this.menuOpen = false
+    },
+    onEnterViewport(value) {
+      this.isInView = value;
     }
   }
 }
@@ -56,20 +69,35 @@ export default {
   justify-content: center;
   align-items: center;
   padding: var(--site-padding);
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   width: 100%;
-  color: var(--color-white);
+  color: var(--color-text);
+  background: var(--color-background);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: color .5s linear, background-color .5s linear, transform .3s ease, opacity .3s ease;
   //animation: fadeDown 1s ease forwards;
+
+  &.inview {
+    transform: translateY(0);
+    opacity: 1;
+    transition: color .5s linear, background-color .5s linear, transform .5s ease, opacity .5s ease;
+  }
+}
+
+.observer {
+  position: absolute;
+  top: 110vh;
+  height: 100%;
 }
 
 .logo {
   width: 100%;
-  height: 4rem;
+  height: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: currentColor;
   position: relative;
   z-index: 100;
 }
@@ -80,7 +108,7 @@ export default {
   &-main {
     display: flex;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 0 2rem;
   }
 
   &-link {
@@ -92,7 +120,6 @@ export default {
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     cursor: pointer;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, .6);
     &:after {
       content: "";
       display: block;
@@ -102,7 +129,6 @@ export default {
       height: var(--border-width);
       width: 0;
       background: currentColor;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
       transition: width .3s ease;
     }
     &:hover {
