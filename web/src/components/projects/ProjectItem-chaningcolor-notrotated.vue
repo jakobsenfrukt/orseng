@@ -52,9 +52,43 @@ export default {
       isInView: false
     }
   },
+  computed: {
+    cssVars() {
+      if (this.project.themePalette) {
+        return {
+          '--color-background-light': this.project.themePalette.light.bgColor ? this.project.themePalette.light.bgColor.hex : 'var(--color-white)',
+          '--color-text-light': this.project.themePalette.light.textColor ? this.project.themePalette.light.textColor.hex : 'var(--color-white)',
+          '--color-detail-light': this.project.themePalette.light.detailColor ? this.project.themePalette.light.detailColor.hex : 'var(--color-white)',
+
+          '--color-background-dark': this.project.themePalette.dark.bgColor ? this.project.themePalette.dark.bgColor.hex : 'var(--color-white)',
+          '--color-text-dark': this.project.themePalette.dark.textColor ? this.project.themePalette.dark.textColor.hex : 'var(--color-white)',
+          '--color-detail-dark': this.project.themePalette.dark.detailColor ? this.project.themePalette.dark.detailColor.hex : 'var(--color-white)',
+        }
+      }
+    }
+  },
   methods: {
     onEnterViewport(value) {
       this.isInView = value;
+      let cssVars;
+
+      if (this.project.themePalette) {
+        cssVars = {
+            '--color-background-light': this.project.themePalette.light.bgColor ? this.project.themePalette.light.bgColor.hex : 'var(--color-white)',
+            '--color-text-light': this.project.themePalette.light.textColor ? this.project.themePalette.light.textColor.hex : 'var(--color-white)',
+            '--color-detail-light': this.project.themePalette.light.detailColor ? this.project.themePalette.light.detailColor.hex : 'var(--color-white)',
+
+            '--color-background-dark': this.project.themePalette.dark.bgColor ? this.project.themePalette.dark.bgColor.hex : 'var(--color-white)',
+            '--color-text-dark': this.project.themePalette.dark.textColor ? this.project.themePalette.dark.textColor.hex : 'var(--color-white)',
+            '--color-detail-dark': this.project.themePalette.dark.detailColor ? this.project.themePalette.dark.detailColor.hex : 'var(--color-white)'
+        }
+      }
+      console.log(cssVars)
+
+      Object.entries(cssVars).forEach(entry => {
+        const [key, value] = entry;
+        document.documentElement.style.setProperty(key, value)
+      })
     }
   }
 }
@@ -77,23 +111,25 @@ export default {
       width: 80%;
       margin: 0 auto;
       position: relative;
-
-      .overlay {
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
-        height: 40%;
-        position: absolute;
-        left: 0;
-        right: 0;
-        &-top {
-          background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
-          top: 0;
-        }
+    }
+    .overlay {
+      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
+      height: 40%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      &-top {
+        background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+        top: 0;
       }
     }
   }
   &-text {
     width: 50%;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0 auto;
+    transform: translateX(10%);
+    opacity: 0;
+    transition: all 1s ease-out;
   }
   &-title {
     font-size: var(--font-xl);
@@ -112,6 +148,10 @@ export default {
     transition: all 1s ease-out;
   }
   &:nth-of-type(even) {
+    .project-text {
+      margin: 1rem auto 0 0;
+      transform: translateX(-10%);
+    }
     .project-title {
       text-align: right;
       transform: translateX(10%);
@@ -140,11 +180,18 @@ export default {
     z-index: 0;
   }
   &.inview {
+    .project-text {
+      transform: translateX(0);
+      opacity: 1;
+    }
     .project-title {
       transform: translateX(0);
       opacity: 1;
     }
     &:nth-of-type(even) {
+      .project-text {
+        transform: translateX(0);
+      }
       .project-title {
         transform: translateX(0);
       }
@@ -154,6 +201,6 @@ export default {
 .observer {
   position: absolute;
   top: 10%;
-  height: 20%;
+  height: 80%;
 }
 </style>

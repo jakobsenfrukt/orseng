@@ -21,7 +21,7 @@
     stroke: currentColor;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: drawSquare 6s ease forwards;
+    animation: drawSquare 6s ease-out forwards;
     animation-delay: .5s;
   }
 }
