@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout overlay>
     <Hero />
     <ProjectGrid />
     <Instafeed />

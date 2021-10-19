@@ -3,13 +3,13 @@
 @import url("https://use.typekit.net/sud1ucm.css");
 
 :root {
-  --font-main: 'europa', serif;
+  --font-main: 'neue-kabel', sans-serif;
   --font-display: 'wulkan display', serif;
 
   --font-xs: .8rem;
-  --font-s: 1rem;
+  --font-s: .9rem;
   --font-m: 1.4rem;
-  --font-l: 2rem;
+  --font-l: 2.4rem;
   --font-xl: 5rem;
   --font-xxl: 7rem;
 
@@ -22,17 +22,27 @@
   // colors
   --color-black: rgb(18, 15, 20);
   --color-white: rgb(250, 248, 246);
+
+  --color-background-light: var(--color-white);
+  --color-text-light: var(--color-black);
+  --color-detail-light: var(--color-black);
+
+  --color-background-dark: var(--color-black);
+  --color-text-dark: var(--color-white);
+  --color-detail-dark: var(--color-white);
 }
 
 body {
-  --color-background: var(--color-white);
-  --color-text: var(--color-black);
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-detail: var(--color-detail-light);
 }
 
 // dark theme
 body[data-theme="dark"] {
-  --color-background: var(--color-black);
-  --color-text: var(--color-white);
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-detail: var(--color-text-dark);
 }
 
 @media (max-width: 800px) {

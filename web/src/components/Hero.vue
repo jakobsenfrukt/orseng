@@ -113,7 +113,7 @@ export default {
   color: var(--color-white);
   &-image {
     height: 100vh;
-    animation: zoomIn 2s ease forwards;
+    animation: zoomIn 1s ease-out forwards;
     background: var(--color-black);
     &-item {
       position: absolute;
@@ -188,16 +188,15 @@ export default {
   }
   &-text {
     position: absolute;
-    bottom: 5rem;
+    bottom: 6rem;
     width: 100%;
     animation: fadeUp 2s ease forwards;
     .lead {
       color: var(--color-white);
       font-size: var(--font-l);
       font-family: var(--font-display);
-      font-style: italic;
       font-weight: 400;
-      max-width: 36rem;
+      max-width: 48rem;
       width: 100%;
       line-height: 1.3;
       margin: 0 auto;

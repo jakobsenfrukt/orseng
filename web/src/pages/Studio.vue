@@ -1,7 +1,7 @@
 <template>
   <Layout class="about">
     <section class="about-section studio">
-      <h2 class="about-heading bio-heading">{{ $page.about.studio.title }}</h2>
+      <h2 class="about-heading bio-heading" v-if="$page.about.studio.title">{{ $page.about.studio.title }}</h2>
       <p class="lead about-lead">{{ $page.about.lead }}</p>
       <block-content :blocks="$page.about.studio._rawText" />
       <img
@@ -11,14 +11,24 @@
         :src="$urlForImage($page.about.studio.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
       />
     </section>
-    <section class="about-section services">
-      <h2 class="about-heading services-heading">Kompetanseområder</h2>
-      <ul class="services-list">
-        <li v-for="(service, index) in $page.about.services" :key="index" class="services-item">
-          {{ service }}
-        </li>
-      </ul>
-    </section>
+    <div class="grid">
+      <section class="about-section services">
+        <h2 class="about-heading services-heading">Kompetanseområder</h2>
+        <ul class="services-list">
+          <li v-for="(service, index) in $page.about.services" :key="index" class="services-item">
+            {{ service }}
+          </li>
+        </ul>
+      </section>
+      <section class="about-section clients">
+        <h2 class="about-heading clients-heading">Kunder</h2>
+        <ul class="clients-list">
+          <li v-for="(client, index) in $page.about.clients" :key="index" class="clients-item">
+            {{ client }}
+          </li>
+        </ul>
+      </section>
+    </div>
     <section class="about-section bio">
       <h2 class="about-heading bio-heading">{{ $page.about.bio.title }}</h2>
       <img
@@ -28,14 +38,6 @@
         :src="$urlForImage($page.about.bio.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
       />
       <block-content :blocks="$page.about.bio._rawText" />
-    </section>
-    <section class="about-section clients">
-      <h2 class="about-heading clients-heading">Kunder</h2>
-      <ul class="clients-list">
-        <li v-for="(client, index) in $page.about.clients" :key="index" class="clients-item">
-          {{ client }}
-        </li>
-      </ul>
     </section>
   </Layout>
 </template>
@@ -127,74 +129,84 @@ export default {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: var(--letter-spacing);
-    margin: 2rem 0;
+    margin: 0 0 2rem;
   }
   &-lead {
     grid-column: 1 / -1;
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: var(--font-l);
-    font-style: italic;
-    font-weight: 200;
-    line-height: 1.4;
     margin: 1rem auto 6rem;
   }
   &-section {
     max-width: 1000px;
-    margin: 0 auto 2rem;
-    padding: 4rem;
+    margin: 0 auto 5rem;
+    padding: 0 3rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
   }
 }
 .studio {
-  padding: 10rem 4rem 0;
+  padding: 10rem 3rem 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: flex-start;
+  padding: 0 3rem;
+  .about-heading {
+    text-align: left;
+  }
 }
 .services {
   max-width: none;
+  padding: 0 3rem 1rem 0;
   &-list {
     grid-column: 1 / -1;
     width: 100%;
     margin: 0;
     padding: 0;
-    text-align: center;
-  }
-  &-item {
-    display: inline;
-    font-family: var(--font-display);
-    font-size: var(--font-l);
-    font-style: italic;
-    font-weight: 200;
-    line-height: 1.2;
-    &:after {
-      content: " ";
-      display: inline-block;
-      width: 2rem;
-      height: var(--border-width-thin);
-      background: currentColor;
-      vertical-align: middle;
-    }
-    &:last-of-type:after {
-      display: none;
-    }
-  }
-}
-.clients {
-  max-width: none;
-  &-list {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
   }
   &-item {
     display: block;
     font-family: var(--font-display);
     font-size: var(--font-l);
-    font-style: italic;
     font-weight: 200;
+    line-height: 1.2;
+    padding-left: 3rem;
+    margin-bottom: .4rem;
+    position: relative;
+    &:before {
+      content: "—";
+      display: block;
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+.clients {
+  max-width: none;
+  padding: 0 3rem 1rem 0;
+  width: 100%;
+  &-list {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  &-item {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--font-l);
+    font-weight: 200;
+    line-height: 1.2;
+    padding-left: 3rem;
+    margin-bottom: .4rem;
+    position: relative;
+    &:before {
+      content: "—";
+      display: block;
+      position: absolute;
+      left: 0;
+    }
   }
 }
 .portrait {

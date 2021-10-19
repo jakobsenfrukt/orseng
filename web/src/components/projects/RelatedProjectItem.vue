@@ -48,7 +48,6 @@ export default {
   transition: all .2s ease-in-out;
   margin: 0 auto 5rem;
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -62,7 +61,7 @@ export default {
     width: 100%;
   }
   &-title {
-    font-size: var(--font-xl);
+    font-size: var(--font-l);
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;

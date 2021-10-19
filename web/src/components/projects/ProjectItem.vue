@@ -1,5 +1,8 @@
 <template>
-  <article class="project">
+  <article class="project" :style="cssVars">
+    <div class="project-title-wrapper">
+      <h3 class="project-title">{{ project.title }}</h3>
+    </div>
     <div class="project-image">
       <g-image
         v-if="project.mainImage"
@@ -9,7 +12,6 @@
       />
     </div>
     <div class="project-text">
-      <h3 class="project-title">{{ project.title }}</h3>
       <p class="project-lead" v-if="project.lead">{{ project.lead }}</p>
       <div class="project-arrow"></div>
     </div>
@@ -37,37 +39,103 @@ export default {
   },
   props: {
     project: Object
+  },
+  computed: {
+    cssVars() {
+      if (this.project.themePalette) {
+        return {
+          '--color-background-light': this.project.themePalette.light.bgColor ? this.project.themePalette.light.bgColor.hex : 'var(--color-white)',
+          '--color-text-light': this.project.themePalette.light.textColor ? this.project.themePalette.light.textColor.hex : 'var(--color-white)',
+          '--color-detail-light': this.project.themePalette.light.detailColor ? this.project.themePalette.light.detailColor.hex : 'var(--color-white)',
+
+          '--color-background-dark': this.project.themePalette.dark.bgColor ? this.project.themePalette.dark.bgColor.hex : 'var(--color-white)',
+          '--color-text-dark': this.project.themePalette.dark.textColor ? this.project.themePalette.dark.textColor.hex : 'var(--color-white)',
+          '--color-detail-dark': this.project.themePalette.dark.detailColor ? this.project.themePalette.dark.detailColor.hex : 'var(--color-white)',
+        }
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .project {
+  --color-text: var(--color-text-light);
+  --color-background: var(--color-background-light);
+  --color-detail: var(--color-detail-light);
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color .5s linear, background-color .5s linear;
+}
+body[data-theme="dark"] {
+ 	.project {
+    --color-text: var(--color-text-dark);
+    --color-background: var(--color-background-dark);
+    --color-detail: var(--color-detail-dark);
+  }
+}
+.project {
   position: relative;
   border-radius: calc(var(--radius)/3);
   transition: all .2s ease-in-out;
-  margin: 0 auto 5rem;
+  margin: 0;
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: flex-end;
   &-image {
     width: 100%;
+    grid-column: span 9;
+    height: 100%;
+    object-fit: cover;
   }
   &-text {
-    text-align: center;
     width: 100%;
+    grid-column: span 2;
+    align-self: flex-start;
+    padding: 0 0 0 1.5rem;
   }
   &-title {
-    font-size: var(--font-xl);
+    font-size: 8vh;
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;
     margin: 0 auto;
     line-height: 1;
+    transform: rotate(-90deg) translateY(100%);
+    transform-origin: 0 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80vh;
+    &-wrapper {
+      width: var(--font-xl);
+      height: 80vh;
+      position: relative;
+      grid-column: span 1;
+    }
+  }
+  &:nth-of-type(even) {
+    .project-text {
+      order: 1;
+      padding: 0 1.5rem 0 0;
+      align-self: flex-end;
+    }
+    .project-image {
+      order: 2;
+    }
+    .project-title-wrapper {
+      order: 3;
+      align-self: flex-start;
+    }
+    .project-title {
+      transform: rotate(90deg) translateX(-10%) translateY(-1.5rem);
+      transform-origin: 0 100%;
+      position: absolute;
+      top: 0;
+      bottom: auto;
+    }
   }
   &-lead {
     font-size: 1rem;

@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header" :class="{open: menuOpen}">
+  <header class="site-header" :class="{open: menuOpen, overlay: overlay}">
     <nav class="nav nav-main nav-left">
       <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
       <g-link class="nav-link" to="/">Prosjekter</g-link>
@@ -32,6 +32,9 @@ export default {
     Logo,
     MenuIcon
   },
+  props: {
+    overlay: Boolean
+  },
   data() {
     return {
       menuOpen: false
@@ -59,8 +62,9 @@ export default {
   position: absolute;
   z-index: 1000;
   width: 100%;
-  color: var(--color-white);
-  //animation: fadeDown 1s ease forwards;
+  &.overlay {
+    color: var(--color-white);
+  }
 }
 
 .logo {
@@ -92,7 +96,6 @@ export default {
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     cursor: pointer;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, .6);
     &:after {
       content: "";
       display: block;
@@ -102,7 +105,6 @@ export default {
       height: var(--border-width);
       width: 0;
       background: currentColor;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
       transition: width .3s ease;
     }
     &:hover {
@@ -110,6 +112,17 @@ export default {
         width: 100%;
         transition: width .36s ease;
       }
+    }
+  }
+  .overlay {
+    nav-link {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+      &:after {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+      }
+    }
+    .logo {
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .7));
     }
   }
 

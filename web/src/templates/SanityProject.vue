@@ -4,7 +4,6 @@
       <ProjectHero :project="$page.project" />
 
       <div class="project-content">
-        <p class="lead" v-if="$page.project.lead">{{ $page.project.lead }}</p>
         <block-content
           :blocks="$page.project._rawDescription"
           v-if="$page.project._rawDescription"
@@ -141,6 +140,7 @@ query project ($id: ID!) {
     themePalette {
       light {
         bgColor {
+          hex
           rgb {
             r
             g
@@ -148,6 +148,15 @@ query project ($id: ID!) {
           }
         }
         textColor {
+          hex
+          rgb {
+            r
+            g
+            b
+          }
+        }
+        detailColor {
+          hex
           rgb {
             r
             g
@@ -157,6 +166,7 @@ query project ($id: ID!) {
       }
       dark {
         bgColor {
+          hex
           rgb {
             r
             g
@@ -164,6 +174,15 @@ query project ($id: ID!) {
           }
         }
         textColor {
+          hex
+          rgb {
+            r
+            g
+            b
+          }
+        }
+        detailColor {
+          hex
           rgb {
             r
             g
@@ -255,15 +274,12 @@ export default {
 .project {
   margin-bottom: 7rem;
 
-  &-lead {
-    margin: 3rem auto;
-  }
-
   &-content {
     display: flex;
     justify-content: center;
     margin: 0 auto;
     font-size: 1.2rem;
+    max-width: 36rem;
     
     img {
       width: calc(100% + var(--space) * 2);
@@ -275,12 +291,15 @@ export default {
 
   &-details {
     font-family: var(--font-body);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 2rem;
-    row-gap: 1rem;
-    max-width: 38rem;
-    margin: 2rem auto 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    column-gap: 5rem;
+    row-gap: 3rem;
+    width: 100%;
+    margin: 5rem auto 5rem;
 
     span {
       display: block;
@@ -288,7 +307,7 @@ export default {
       text-transform: uppercase;
       font-size: var(--font-xs);
       letter-spacing: var(--letter-spacing);
-      color: rgb(184, 111, 43);
+      color: var(--color-detail);
     }
     p {
       margin: 0;

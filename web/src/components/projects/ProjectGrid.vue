@@ -45,6 +45,60 @@ query {
             right
           }
         }
+        themePalette {
+          light {
+            bgColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+            textColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+            detailColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+          }
+          dark {
+            bgColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+            textColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+            detailColor {
+              hex
+              rgb {
+                r
+                g
+                b
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -72,7 +126,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--site-padding);
-  margin: 0 auto 3rem;
+  column-gap: var(--site-padding);
+  margin: 0 auto;
 }
 </style>

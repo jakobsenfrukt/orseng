@@ -1,5 +1,8 @@
 <template>
   <section class="project-hero">
+    <div class="project-hero-title-wrapper">
+      <h1 class="project-hero-title">{{ project.title }}</h1>
+    </div>
     <div class="project-hero-image">
       <img
         :alt="project.mainImage.alt"
@@ -9,7 +12,10 @@
       <div class="overlay overlay-top"></div>
       <div class="overlay overlay-bottom"></div>
     </div>
-    <h1 class="project-hero-title">{{ project.title }}</h1>
+    <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
+      <h1 class="project-hero-title project-hero-title-2">{{ project.title }}</h1>
+    </div>
+    <p class="lead project-hero-lead" v-if="project.lead">{{ project.lead }}</p>
   </section>
 </template>
 
@@ -35,15 +41,19 @@ export default {
 <style lang="scss" scoped>
 .project-hero {
   position: relative;
-  height: 100vh;
-  color: var(--color-white);
+  padding: 6.5rem 3rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: flex-end;
   &-image {
-    height: 100vh;
     animation: zoomIn 2s ease forwards;
+    width: 100%;
+    grid-column: span 10;
+    height: 100%;
+    object-fit: cover;
     &-item {
-      position: absolute;
       width: 100%;
-      height: 100vh;
+      height: 100%;
       object-fit: cover;
     }
     .overlay {
@@ -64,19 +74,49 @@ export default {
   }
   &-title {
     position: absolute;
-    bottom: 1rem;
+    bottom: 3rem;
     animation: fadeUp 2s ease forwards;
-    color: var(--color-white);
-    font-size: var(--font-xl);
     font-family: var(--font-display);
     text-transform: uppercase;
     font-weight: 300;
-    width: 100%;
+    width: calc(100% - 6rem);
     line-height: 1.3;
     margin: 0 auto;
-    text-align: center;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
-}
+
+    font-size: 10vh;
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0 auto;
+    line-height: 1;
+    transform: rotate(-90deg) translateY(100%);
+    transform-origin: 0 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80vh;
+    &-wrapper {
+      width: var(--font-xl);
+      height: 80vh;
+      position: relative;
+      grid-column: span 1;
+    }
+    &-2 {
+      transform: rotate(90deg) translateX(-12%) translateY(-1.5rem);
+      transform-origin: 0 100%;
+      position: absolute;
+      top: 0;
+      bottom: auto;
+    }
+    &-wrapper-2 {
+      align-self: flex-start;
+    }
+  }
+  &-lead {
+    grid-column: 2 / span 9;
+    text-align: left;
+    margin: 1.5rem 0;
+  }
 }
 @keyframes zoomIn {
   from {
@@ -84,16 +124,6 @@ export default {
   }
   to {
     transform: scale(1);
-  }
-}
-@keyframes fadeUp {
-  from {
-    opacity: .5;
-    transform: translateY(30%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>

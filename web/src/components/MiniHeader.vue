@@ -84,6 +84,15 @@ export default {
     opacity: 1;
     transition: color .5s linear, background-color .5s linear, transform .5s ease, opacity .5s ease;
   }
+
+  &-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: 100;
+  }
 }
 
 .observer {
@@ -94,7 +103,7 @@ export default {
 
 .logo {
   width: 100%;
-  height: 1.3rem;
+  height: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,6 +192,7 @@ export default {
 
 @media (max-width: 1000px) {
   .nav {
+    padding: 1rem 2rem;
     &-main {
       .nav-link {
         display: none;
