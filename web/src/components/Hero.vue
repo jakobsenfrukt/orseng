@@ -5,7 +5,7 @@
         v-for="(image, index) in $static.frontpage.hero"
         :key="index"
         :alt="image.alt"
-        :src="$urlForImage(image, $static.metadata.sanityOptions).width(1600).auto('format').url()"
+        :src="$urlForImage(image, $static.metadata.sanityOptions).width(1900).auto('format').url()"
         class="hero-image-item"
         :class="(index === currentIndex) ? 'current' : ''"
       />

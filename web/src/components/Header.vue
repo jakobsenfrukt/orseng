@@ -2,7 +2,7 @@
   <header class="site-header" :class="{open: menuOpen, overlay: overlay}">
     <nav class="nav nav-main nav-left">
       <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
-      <g-link class="nav-link" to="/">Prosjekter</g-link>
+      <g-link class="nav-link" to="/prosjekter">Prosjekter</g-link>
       <g-link class="nav-link" to="/studio">Studio</g-link>
     </nav>
     <g-link class="logo" to="/">
@@ -14,7 +14,7 @@
     </nav>
 
     <nav class="nav-mobile">
-      <g-link class="nav-link" to="/">Prosjekter</g-link>
+      <g-link class="nav-link" to="/prosjekter">Prosjekter</g-link>
       <g-link class="nav-link" to="/studio">Studio</g-link>
       <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
       <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>

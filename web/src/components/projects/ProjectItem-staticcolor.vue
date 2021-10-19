@@ -7,7 +7,7 @@
       <g-image
         v-if="project.mainImage"
         class="project-image"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).height(600).width(800).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1900).auto('format').url()"
         :alt="project.mainImage.alt"
       />
     </div>

@@ -6,7 +6,7 @@
     <div class="project-hero-image">
       <img
         :alt="project.mainImage.alt"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1600).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1800).auto('format').url()"
         class="project-hero-image-item"
       />
     </div>
@@ -47,7 +47,7 @@ export default {
     animation: fadeIn 3s ease forwards;
     width: 100%;
     grid-column: span 10;
-    height: 100%;
+    height: 80vh;
     object-fit: cover;
     &-item {
       width: 100%;

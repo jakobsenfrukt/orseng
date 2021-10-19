@@ -1,6 +1,6 @@
 <template>
-  <Layout overlay>
-    <Hero />
+  <Layout>
+    <br /><br /><br /><br />
     <ProjectGrid />
     <Instafeed />
   </Layout>

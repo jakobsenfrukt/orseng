@@ -1,11 +1,11 @@
 <template>
-  <article class="project" :style="cssVars" :class="{inview: isInView}">
+  <article class="project" :class="{inview: isInView}">
     <h3 class="project-title">{{ project.title }}</h3>
     <div class="project-image-wrapper">
       <g-image
         v-if="project.mainImage"
         class="project-image"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).height(600).width(800).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1900).auto('format').url()"
         :alt="project.mainImage.alt"
       />
       <div class="overlay overlay-top"></div>

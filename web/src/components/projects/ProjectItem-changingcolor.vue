@@ -1,5 +1,5 @@
 <template>
-  <article class="project" :style="cssVars" :class="{inview: isInView}">
+  <article class="project" :class="{inview: isInView}">
     <div class="project-title-wrapper">
       <h3 class="project-title">{{ project.title }}</h3>
     </div>
@@ -7,7 +7,7 @@
       <g-image
         v-if="project.mainImage"
         class="project-image"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).height(600).width(800).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1900).auto('format').url()"
         :alt="project.mainImage.alt"
       />
     </div>
@@ -18,7 +18,7 @@
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`">Link</g-link>
 
     <IntersectionObserver
-      id="observer"
+      :id="`observer-${project.id}`"
       class="observer"
       @on-enter-viewport="onEnterViewport"
     ></IntersectionObserver>
@@ -53,26 +53,14 @@ export default {
       isInView: false
     }
   },
-  computed: {
-    cssVars() {
-      if (this.project.themePalette) {
-        return {
-          '--color-background-light': this.project.themePalette.light.bgColor ? this.project.themePalette.light.bgColor.hex : 'var(--color-white)',
-          '--color-text-light': this.project.themePalette.light.textColor ? this.project.themePalette.light.textColor.hex : 'var(--color-white)',
-          '--color-detail-light': this.project.themePalette.light.detailColor ? this.project.themePalette.light.detailColor.hex : 'var(--color-white)',
-
-          '--color-background-dark': this.project.themePalette.dark.bgColor ? this.project.themePalette.dark.bgColor.hex : 'var(--color-white)',
-          '--color-text-dark': this.project.themePalette.dark.textColor ? this.project.themePalette.dark.textColor.hex : 'var(--color-white)',
-          '--color-detail-dark': this.project.themePalette.dark.detailColor ? this.project.themePalette.dark.detailColor.hex : 'var(--color-white)',
-        }
-      }
-    }
-  },
   methods: {
     onEnterViewport(value) {
       this.isInView = value;
-      let cssVars;
+      if (value === false) {
+        return
+      }
 
+      let cssVars;
       if (this.project.themePalette) {
         cssVars = {
             '--color-background-light': this.project.themePalette.light.bgColor ? this.project.themePalette.light.bgColor.hex : 'var(--color-white)',
@@ -188,6 +176,7 @@ export default {
 }
 .observer {
   position: absolute;
-  top: 45%;
+  top: 30%;
+  height: 1px;
 }
 </style>
