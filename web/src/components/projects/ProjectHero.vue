@@ -11,7 +11,7 @@
       />
     </div>
     <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
-      <h1 class="project-hero-title project-hero-title-2">{{ project.title }}</h1>
+      <h1 class="project-hero-title project-hero-title-2">{{ project.categories[0].title }} &mdash; {{ project.publishedAt }}</h1>
     </div>
     <p class="lead project-hero-lead" v-if="project.lead">{{ project.lead }}</p>
   </section>
@@ -64,7 +64,6 @@ export default {
     width: calc(100% - 6rem);
     line-height: 1.3;
     margin: 0 auto;
-    opacity: .3;
 
     font-size: 10vh;
     font-family: var(--font-display);
@@ -72,7 +71,7 @@ export default {
     text-transform: uppercase;
     margin: 0 auto;
     line-height: 1;
-    transform: rotate(-90deg) translateY(100%);
+    transform: rotate(-90deg) translateY(90%);
     transform-origin: 0 100%;
     position: absolute;
     bottom: 0;
@@ -83,6 +82,7 @@ export default {
       height: 80vh;
       position: relative;
       grid-column: span 1;
+      animation: slideUp 2s ease forwards;
     }
     &-2 {
       transform: rotate(90deg) translateX(-12%) translateY(-1.5rem);
@@ -90,9 +90,11 @@ export default {
       position: absolute;
       top: 0;
       bottom: auto;
+      opacity: .24;
     }
     &-wrapper-2 {
       align-self: flex-start;
+      animation: slideDown 2s ease forwards;
     }
   }
   &-lead {
@@ -107,6 +109,26 @@ export default {
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

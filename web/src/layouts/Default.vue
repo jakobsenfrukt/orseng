@@ -40,7 +40,7 @@ export default {
         return {
           '--color-background-light': this.palette.light.bgColor ? this.palette.light.bgColor.hex : 'var(--color-white)',
           '--color-text-light': this.palette.light.textColor ? this.palette.light.textColor.hex : 'var(--color-white)',
-          '--color-detail-light': this.palette.light.detailColor ? this.palette.light.detailColor.hex : 'var(--color-white)',
+          '--color-detail-light': this.palette.light.detailColor ? this.palette.light.detailColor.hex : 'var(--color-black)',
 
           '--color-background-dark': this.palette.dark.bgColor ? this.palette.dark.bgColor.hex : 'var(--color-white)',
           '--color-text-dark': this.palette.dark.textColor ? this.palette.dark.textColor.hex : 'var(--color-white)',

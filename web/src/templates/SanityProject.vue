@@ -12,22 +12,22 @@
       </div>
 
       <div class="project-details" v-if="$page.project.projectDetails">
-        <div class="project-categories">
+        <!--<div class="project-categories">
           <span>Type</span>
           <p v-if="$page.project.categories.length">{{ $page.project.categories[0].title }}</p>
         </div>
         <div class="project-year">
           <span>År</span>
           <p>{{ $page.project.publishedAt }}</p>
-        </div>
+        </div>-->
         <div class="project-client" v-if="$page.project.projectDetails.client">
           <span>Kunde</span>
           <p>{{ $page.project.projectDetails.client }}</p>
         </div>
-        <div class="project-location" v-if="$page.project.projectDetails.location">
+        <!--<div class="project-location" v-if="$page.project.projectDetails.location">
           <span>Sted</span>
           <p>{{ $page.project.projectDetails.location }}</p>
-        </div>
+        </div>-->
         <div class="project-collaborators" v-if="$page.project.projectDetails.collaborators">
           <span>Samarbeidspartnere</span>
           <ul class="project-collaborators-list">

@@ -107,14 +107,14 @@ export default {
     width: 90%;
     position: relative;
     z-index: 10;
-    transform: translateX(-10%);
+    transform: translateX(-5%);
     opacity: 0;
-    transition: all 1s ease-out;
+    transition: all 2s ease;
   }
   &:nth-of-type(even) {
     .project-title {
       text-align: right;
-      transform: translateX(10%);
+      transform: translateX(5%);
     }
   }
   &-lead {

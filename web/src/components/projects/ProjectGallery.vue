@@ -125,7 +125,7 @@ export default {
     width: 100%;
     max-width: 30rem;
     font-size: var(--font-s);
-    padding: 1rem;
+    padding: 1rem 0;
   }
 
   figure {
