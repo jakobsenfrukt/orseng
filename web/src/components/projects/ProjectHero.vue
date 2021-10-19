@@ -64,6 +64,7 @@ export default {
     width: calc(100% - 6rem);
     line-height: 1.3;
     margin: 0 auto;
+    opacity: .3;
 
     font-size: 10vh;
     font-family: var(--font-display);

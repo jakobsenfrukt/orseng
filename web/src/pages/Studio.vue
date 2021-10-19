@@ -168,7 +168,7 @@ export default {
   &-item {
     display: block;
     font-family: var(--font-display);
-    font-size: var(--font-l);
+    font-size: 2rem;
     font-weight: 200;
     line-height: 1.2;
     padding-left: 3rem;
@@ -195,7 +195,7 @@ export default {
   &-item {
     display: block;
     font-family: var(--font-display);
-    font-size: var(--font-l);
+    font-size: 2rem;
     font-weight: 200;
     line-height: 1.2;
     padding-left: 3rem;

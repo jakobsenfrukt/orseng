@@ -42,42 +42,8 @@
         </div>
       </div>
 
-      <div class="project-gallery" v-if="$page.project.gallery.length">
-        <div v-for="(item, index) in $page.project.gallery" :key="`content-${index}`">
-          <div v-if="item._type === 'figure'" class="onecolumn">
-            <img
-              :src="$urlForImage(item.asset.url, $page.metadata.sanityOptions).width(1200).auto('format').url()"
-              :alt="item.alt"
-            />
-            <p class="caption">{{ item.caption }}</p>
-          </div>
-          <div v-if="item._type === 'figureTwoColumn'" class="twocolumn">
-            <figure>
-              <img
-                :src="$urlForImage(item.image1.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
-                :alt="item.image1.alt"
-              />
-              <figcaption v-if="item.image1.caption">
-                <p class="caption">{{ item.image1.caption }}</p>
-              </figcaption>
-            </figure>
-            <figure>
-              <img
-                :src="$urlForImage(item.image2.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
-                :alt="item.image1.alt"
-              />
-              <figcaption v-if="item.image2.caption">
-                <p class="caption">{{ item.image2.caption }}</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div v-if="item._type === 'video'" class="video">
-            <video controls>
-              <source :src="item.asset.url" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
+      <ProjectGallery v-if="$page.project.gallery.length" :content="$page.project.gallery" />
+
       <div class="related" v-if="$page.project.relatedProjects.length">
         <div class="related-heading">
           <h2>Relaterte prosjekter</h2>
@@ -219,6 +185,7 @@ query project ($id: ID!) {
       }
       ... on SanityFigureTwoColumn {
         _type
+        columns
         image1 {
           asset {
             url
@@ -247,12 +214,14 @@ query project ($id: ID!) {
 
 <script>
 import ProjectHero from '~/components/projects/ProjectHero'
+import ProjectGallery from '~/components/projects/ProjectGallery'
 import BlockContent from '~/components/BlockContent'
 import RelatedProjectItem from '~/components/projects/RelatedProjectItem'
 
 export default {
   components: {
     ProjectHero,
+    ProjectGallery,
     BlockContent,
     RelatedProjectItem
   },
@@ -318,31 +287,6 @@ export default {
       margin: 0;
       padding: 0;
       list-style: none;
-    }
-  }
-  &-gallery {
-    max-width: 1000px;
-    margin: 2rem auto;
-    .onecolumn, .twocolumn, .video {
-      margin-bottom: 2rem;
-    }
-    .video {
-      video {
-        width: 100%;
-      }
-    }
-    .twocolumn {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 2rem;
-    }
-    .caption {
-      width: 50%;
-      font-size: .9rem;
-    }
-    figcaption .caption {
-      width: 100%;
-      font-size: .9rem;
     }
   }
 }
