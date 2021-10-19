@@ -46,8 +46,9 @@ body[data-theme="dark"] {
   --color-detail: var(--color-text-dark);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   :root {
     --site-padding: .5rem;
+    --site-padding-l: 2rem;
   }
 }

@@ -138,27 +138,27 @@ export default {
   &-section {
     max-width: 1000px;
     margin: 0 auto 5rem;
-    padding: 0 3rem;
+    padding: 0 var(--site-padding-l);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
   }
 }
 .studio {
-  padding: 10rem 3rem 0;
+  padding: 10rem var(--site-padding-l) 0;
 }
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
-  padding: 0 3rem;
+  padding: 0 var(--site-padding-l);
   .about-heading {
     text-align: left;
   }
 }
 .services {
   max-width: none;
-  padding: 0 3rem 1rem 0;
+  padding: 0 var(--site-padding-l) 1rem 0;
   &-list {
     grid-column: 1 / -1;
     width: 100%;
@@ -171,7 +171,7 @@ export default {
     font-size: 2rem;
     font-weight: 200;
     line-height: 1.2;
-    padding-left: 3rem;
+    padding-left: var(--site-padding-l);
     margin-bottom: .4rem;
     position: relative;
     &:before {
@@ -184,7 +184,7 @@ export default {
 }
 .clients {
   max-width: none;
-  padding: 0 3rem 1rem 0;
+  padding: 0 var(--site-padding-l) 1rem 0;
   width: 100%;
   &-list {
     grid-column: 1 / -1;
@@ -198,7 +198,7 @@ export default {
     font-size: 2rem;
     font-weight: 200;
     line-height: 1.2;
-    padding-left: 3rem;
+    padding-left: var(--site-padding-l);
     margin-bottom: .4rem;
     position: relative;
     &:before {
@@ -211,5 +211,19 @@ export default {
 }
 .portrait {
   width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .about {
+    &-section {
+      grid-template-columns: 1fr;
+      img {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

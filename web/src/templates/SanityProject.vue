@@ -266,7 +266,7 @@ export default {
     justify-content: center;
     text-align: center;
     column-gap: 5rem;
-    row-gap: 3rem;
+    row-gap: var(--site-padding-l);
     width: 100%;
     margin: 5rem auto 5rem;
 
@@ -292,7 +292,7 @@ export default {
 }
 .related {
   margin: 6rem auto;
-  padding: 0 3rem;
+  padding: 0 var(--site-padding-l);
 }
 .related-heading {
   display: flex;

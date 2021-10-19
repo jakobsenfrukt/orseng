@@ -68,7 +68,7 @@ export default {
   margin: 0;
   width: 100%;
   min-height: 101vh;
-  padding: 6rem 3rem 3rem;
+  padding: 6rem var(--site-padding-l) 3rem;
   &-image {
     height: 70vh;
     width: 100%;

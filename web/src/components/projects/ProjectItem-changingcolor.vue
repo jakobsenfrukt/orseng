@@ -106,7 +106,7 @@ export default {
   margin: 0;
   width: 100%;
   min-height: 101vh;
-  padding: 3rem;
+  padding: var(--site-padding-l);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: flex-end;

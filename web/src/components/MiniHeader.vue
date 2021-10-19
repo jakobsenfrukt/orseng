@@ -151,13 +151,13 @@ export default {
   &-left {
     justify-content: flex-start;
     .nav-link {
-      margin: 0 3rem 0 0;
+      margin: 0 var(--site-padding-l) 0 0;
     }
   }
   &-right {
     justify-content: flex-end;
     .nav-link {
-      margin: 0 0 0 3rem;
+      margin: 0 0 0 var(--site-padding-l);
     }
   }
   &-mobile {
@@ -186,6 +186,7 @@ export default {
   width: 1.4rem;
   position: relative;
   z-index: 100;
+  cursor: pointer;
 
   display: none;
 }

@@ -196,7 +196,7 @@ export default {
       font-family: var(--font-display);
       font-weight: 400;
       max-width: 48rem;
-      width: 100%;
+      width: 90%;
       line-height: 1.3;
       margin: 0 auto;
       text-align: center;

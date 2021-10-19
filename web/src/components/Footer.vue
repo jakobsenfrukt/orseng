@@ -78,31 +78,30 @@ export default {
   flex-wrap: wrap;
   align-content: center;
   position: relative;
+}
+.contact {
+  &-heading {
+    padding: 0 1rem;
+    font-family: var(--font-display);
+    font-size: var(--font-xxl);
+    margin: 2rem 0;
+  }
+  &-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start;
+    padding: 0 1rem 4rem;
+  }
+  &-label {
+    margin: 0 auto 2rem;
+    font-family: var(--font-main);
+    font-size: var(--font-m);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
 
-  .contact {
-    &-heading {
-      padding: 0 1rem;
-      font-family: var(--font-display);
-      font-size: var(--font-xxl);
-      margin: 2rem 0;
-    }
-    &-grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: flex-start;
-      padding: 0 1rem 4rem;
-    }
-    &-label {
-      margin: 0 auto 2rem;
-      font-family: var(--font-main);
-      font-size: var(--font-m);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing);
-
-      display: none;
-    }
+    display: none;
   }
 }
 .footer-grid {
@@ -110,13 +109,12 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   align-items: center;
-  padding: var(--site-padding);
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 3rem;
+  padding: var(--site-padding-l);
 
   font-family: var(--font-main);
   font-size: var(--font-s);
@@ -138,6 +136,35 @@ export default {
   span {
     display: inline-block;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contact {
+    &-heading {
+      font-size: var(--font-xl);
+      padding: 0;
+    }
+    &-grid {
+      grid-template-columns: 1fr;
+      gap: var(--site-padding-l);
+      padding: 0 0 var(--site-padding-l);
+    }
+    &-label {
+      margin: 0 auto 2rem;
+      font-family: var(--font-main);
+      font-size: var(--font-m);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing);
+
+      display: none;
+    }
+  }
+  .footer-grid {
+    align-items: flex-start;
+    padding: 0 2rem 2rem;
+    font-size: var(--font-xs);
   }
 }
 </style>
