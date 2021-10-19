@@ -190,7 +190,6 @@ export default {
     position: absolute;
     bottom: 6rem;
     width: 100%;
-    animation: fadeUp 2s ease forwards;
     .lead {
       color: var(--color-white);
       font-size: var(--font-l);
@@ -207,7 +206,7 @@ export default {
 }
 @keyframes zoomIn {
   from {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
   to {
     transform: scale(1);

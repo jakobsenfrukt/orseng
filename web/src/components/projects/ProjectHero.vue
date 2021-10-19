@@ -9,8 +9,6 @@
         :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1600).auto('format').url()"
         class="project-hero-image-item"
       />
-      <div class="overlay overlay-top"></div>
-      <div class="overlay overlay-bottom"></div>
     </div>
     <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
       <h1 class="project-hero-title project-hero-title-2">{{ project.title }}</h1>
@@ -46,7 +44,7 @@ export default {
   grid-template-columns: repeat(12, 1fr);
   align-items: flex-end;
   &-image {
-    animation: zoomIn 2s ease forwards;
+    animation: fadeIn 3s ease forwards;
     width: 100%;
     grid-column: span 10;
     height: 100%;
@@ -56,26 +54,10 @@ export default {
       height: 100%;
       object-fit: cover;
     }
-    .overlay {
-      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
-      height: 40%;
-      position: absolute;
-      left: 0;
-      right: 0;
-      &-top {
-        background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
-        top: 0;
-      }
-      &-bottom {
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
-        bottom: 0;
-      }
-    }
   }
   &-title {
     position: absolute;
     bottom: 3rem;
-    animation: fadeUp 2s ease forwards;
     font-family: var(--font-display);
     text-transform: uppercase;
     font-weight: 300;
@@ -118,12 +100,12 @@ export default {
     margin: 1.5rem 0;
   }
 }
-@keyframes zoomIn {
+@keyframes fadeIn {
   from {
-    transform: scale(1.05);
+    opacity: 0;
   }
   to {
-    transform: scale(1);
+    opacity: 1;
   }
 }
 </style>
