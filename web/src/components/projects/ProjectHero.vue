@@ -11,7 +11,7 @@
       />
     </div>
     <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
-      <h1 class="project-hero-title project-hero-title-2">{{ project.categories[0].title }} &mdash; {{ project.publishedAt }}</h1>
+      <h1 class="project-hero-title project-hero-title-2"><template v-if="project.categories.length">{{ project.categories[0].title }} &mdash; </template>{{ project.publishedAt }}</h1>
     </div>
     <p class="lead project-hero-lead" v-if="project.lead">{{ project.lead }}</p>
   </section>
