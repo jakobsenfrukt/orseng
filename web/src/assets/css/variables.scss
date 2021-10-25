@@ -18,6 +18,7 @@
   --site-padding: 1rem;
   --site-padding-m: 2rem;
   --site-padding-l: 3rem;
+  --site-padding-xl: 3.5rem;
   --border-width: 2px;
   --border-width-thin: 1px;
 
@@ -49,7 +50,19 @@ body[data-theme="dark"] {
 
 @media (max-width: 1000px) {
   :root {
+    --font-xs: .8rem;
+    --font-s: .9rem;
+    --font-m: 1.4rem;
+    --font-l: 1.8rem;
+    --font-xl: 3rem;
+    --font-xxl: 5rem;
+
     --site-padding: .5rem;
     --site-padding-l: 2rem;
+
+    --site-padding: .5rem;
+    --site-padding-m: 1rem;
+    --site-padding-l: 1.5rem;
+    --site-padding-xl: 2.5rem;
   }
 }

@@ -186,4 +186,23 @@ export default {
     width: 100%;
   }
 }
+
+@media (max-width: 800px) {
+  .project-gallery {
+    .double, .triple {
+      display: block;
+    }
+    figure {
+      margin-bottom: var(--site-padding-l);
+    }
+    figcaption {
+      position: static;
+      background: transparent;
+      padding: .5rem 0 1rem;
+      .caption {
+        color: var(--color-text);
+      }
+    }
+  }
+}
 </style>

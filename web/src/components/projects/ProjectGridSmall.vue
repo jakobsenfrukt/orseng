@@ -120,9 +120,20 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: var(--site-padding);
+  column-gap: var(--site-padding-m);
   align-items: flex-start;
   margin: 0 auto;
   padding: var(--site-padding-l);
+}
+
+@media (max-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

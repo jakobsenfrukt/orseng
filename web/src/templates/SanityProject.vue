@@ -241,6 +241,7 @@ export default {
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    padding: 0 var(--site-padding-l);
     font-size: 1.2rem;
     max-width: 36rem;
     
@@ -262,7 +263,7 @@ export default {
     column-gap: 5rem;
     row-gap: var(--site-padding-l);
     width: 100%;
-    margin: 5rem auto 5rem;
+    margin: 5rem auto;
 
     span {
       display: block;
@@ -316,6 +317,27 @@ export default {
   gap: var(--site-padding-m);
   .project {
     margin: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .project {
+    &-details {
+      display: block;
+      margin: 2.5rem auto;
+
+      p, ul {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  .related-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

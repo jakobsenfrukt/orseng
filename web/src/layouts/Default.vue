@@ -1,5 +1,5 @@
 <template>
-  <div class="layout" :style="cssVars">
+  <div class="layout">
     <Header :overlay="overlay" />
     <MiniHeader />
     <transition name="fade" appear>
@@ -97,11 +97,14 @@ export default {
     changeColor() {
       Object.entries(this.cssVars).forEach(entry => {
         const [key, value] = entry;
-        document.documentElement.style.setProperty(key, value)
+        document.body.style.setProperty(key, value)
       })
     }
   },
   mounted() {
+    this.changeColor()
+  },
+  updated() {
     this.changeColor()
   }
 }

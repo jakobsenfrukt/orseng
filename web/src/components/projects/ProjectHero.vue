@@ -65,7 +65,7 @@ export default {
     line-height: 1.3;
     margin: 0 auto;
 
-    font-size: 10vh;
+    font-size: 9vh;
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;
@@ -129,6 +129,44 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .project-hero {
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+    padding: 5rem 0 0;
+
+    &-title {
+      transform: rotate(0);
+      font-size: var(--font-xl);
+      text-align: center;
+      width: 100%;
+      position: static;
+
+      &-wrapper {
+        height: auto;
+        width: 100%;
+        order: 2;
+      }
+      &-wrapper-2 {
+        order: 3;
+      }
+    }
+    &-image {
+      order: 1;
+      grid-column: span 1;
+      height: auto;
+      margin: var(--site-padding-m) auto;
+    }
+    &-lead {
+      order: 4;
+      grid-column: span 1;
+      text-align: center;
+      margin: 2rem auto 3rem;
+      max-width: 90%;
+    }
   }
 }
 </style>

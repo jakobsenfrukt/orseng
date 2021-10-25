@@ -77,6 +77,7 @@ export default {
       Object.entries(cssVars).forEach(entry => {
         const [key, value] = entry;
         document.documentElement.style.setProperty(key, value)
+        document.body.style.setProperty(key, value)
       })
     }
   }
@@ -194,5 +195,35 @@ export default {
   position: absolute;
   top: 30%;
   height: 1px;
+}
+
+@media (max-width: 800px) {
+  .project {
+    min-height: 0;
+    &-image {
+      height: auto;
+      &-wrapper {
+        width: 100%;
+      }
+    }
+    &-title {
+      width: 100%;
+      text-align: center;
+    }
+    &-text {
+      width: 100%;
+      margin: 0;
+      padding: .5rem 1rem;
+    }
+    &:nth-of-type(even) {
+      .project-text {
+        margin: 0;
+        padding: .5rem 1rem;
+      }
+      .project-title {
+        text-align: center;
+      }
+    }
+  }
 }
 </style>
