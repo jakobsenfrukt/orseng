@@ -136,7 +136,7 @@ export default {
     margin: 1rem auto 6rem;
   }
   &-section {
-    max-width: 1000px;
+    max-width: 54rem;
     margin: 0 auto 5rem;
     padding: 0 var(--site-padding-l);
     display: grid;
@@ -148,8 +148,11 @@ export default {
   padding: 10rem var(--site-padding-l) 0;
 }
 .grid {
+  max-width: 54rem;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
   align-items: flex-start;
   padding: 0 var(--site-padding-l);
   .about-heading {
@@ -158,7 +161,7 @@ export default {
 }
 .services {
   max-width: none;
-  padding: 0 var(--site-padding-l) 1rem 0;
+  padding: 0;
   &-list {
     grid-column: 1 / -1;
     width: 100%;
@@ -167,11 +170,10 @@ export default {
   }
   &-item {
     display: block;
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 200;
+    font-size: var(--font-m);
+    font-weight: 300;
     line-height: 1.2;
-    padding-left: var(--site-padding-l);
+    padding-left: var(--site-padding-m);
     margin-bottom: .4rem;
     position: relative;
     &:before {
@@ -184,8 +186,8 @@ export default {
 }
 .clients {
   max-width: none;
-  padding: 0 var(--site-padding-l) 1rem 0;
   width: 100%;
+  padding: 0;
   &-list {
     grid-column: 1 / -1;
     width: 100%;
@@ -194,11 +196,10 @@ export default {
   }
   &-item {
     display: block;
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 200;
+    font-size: var(--font-m);
+    font-weight: 300;
     line-height: 1.2;
-    padding-left: var(--site-padding-l);
+    padding-left: var(--site-padding-m);
     margin-bottom: .4rem;
     position: relative;
     &:before {

@@ -30,7 +30,7 @@ export default {
   preview: {
     select: {
       imageUrl: 'image1.asset.url',
-      title: 'image1.caption'
+      title: '2 bilder'
     }
   }
 }

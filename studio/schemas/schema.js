@@ -17,6 +17,7 @@ import source from './objects/source'
 import figure from './objects/figure'
 import video from './objects/video'
 import figureTwoColumn from './objects/figureTwoColumn'
+import figureThreeColumn from './objects/figureThreeColumn'
 import simplePortableText from './objects/simplePortableText'
 import colorSet from './objects/colorSet'
 import themePalette from './objects/themePalette'
@@ -36,6 +37,7 @@ export default createSchema({
     figure,
     video,
     figureTwoColumn,
+    figureThreeColumn,
     simplePortableText,
     colorSet,
     themePalette,

@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <br /><br /><br /><br />
-    <ProjectGrid />
+    <ProjectGridSmall />
     <Instafeed />
   </Layout>
 </template>
@@ -9,13 +9,13 @@
 <script>
 import Hero from '@/components/Hero'
 import Instafeed from '@/components/Instafeed'
-import ProjectGrid from '@/components/projects/ProjectGrid2'
+import ProjectGridSmall from '@/components/projects/ProjectGridSmall'
 
 export default {
   components: {
     Hero,
     Instafeed,
-    ProjectGrid
+    ProjectGridSmall
   },
   metaInfo: {
     title: 'Ørseng Interiørarkitektur'

@@ -15,6 +15,11 @@ export default {
       title: 'Facebookbilde',
       description: 'Vises når man deler siden på Facebook o.l. hvis ikke et annet bilde er tilgjengelig.',
       validation: Rule => Rule.error('Mangler Facebookbilde!').required(),
+    },
+    {
+      name: 'themePalette',
+      title: 'Fargepalett',
+      type: 'themePalette'
     }
   ]
 }

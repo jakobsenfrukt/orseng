@@ -9,7 +9,7 @@
 <script>
 import Hero from '@/components/Hero'
 import Instafeed from '@/components/Instafeed'
-import ProjectGrid from '@/components/projects/ProjectGrid2'
+import ProjectGrid from '@/components/projects/ProjectGrid'
 
 export default {
   components: {

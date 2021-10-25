@@ -66,6 +66,9 @@ export default {
           type: 'figureTwoColumn'
         },
         {
+          type: 'figureThreeColumn'
+        },
+        {
           type: 'video'
         }
       ]

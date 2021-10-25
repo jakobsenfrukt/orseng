@@ -1,7 +1,7 @@
 <template>
   <section class="project-grid">
-    <ProjectItem
-      v-for="project in $static.projects.edges.slice(0, limit)"
+    <ProjectItemSmall
+      v-for="project in $static.projects.edges"
       :key="project.id"
       :project="project.node"
     />
@@ -106,17 +106,11 @@ query {
 </static-query>
 
 <script>
-import ProjectItem from '@/components/projects/ProjectItem-changingcolor'
+import ProjectItemSmall from '@/components/projects/ProjectItemSmall'
 
 export default {
   components: {
-    ProjectItem
-  },
-  props: {
-    limit: {
-      type: Number,
-      default: 12
-    }
+    ProjectItemSmall
   }
 }
 </script>
@@ -125,8 +119,10 @@ export default {
 .project-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   column-gap: var(--site-padding);
+  align-items: flex-start;
   margin: 0 auto;
+  padding: var(--site-padding-l);
 }
 </style>

@@ -49,7 +49,7 @@
           <h2>Relaterte prosjekter</h2>
         </div>
         <div class="related-grid">
-          <RelatedProjectItem
+          <ProjectItemSmall
             v-for="(project, index) in $page.project.relatedProjects"
             :key="`related-${index}`"
             :project="project"
@@ -107,53 +107,23 @@ query project ($id: ID!) {
       light {
         bgColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
         textColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
         detailColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
       }
       dark {
         bgColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
         textColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
         detailColor {
           hex
-          rgb {
-            r
-            g
-            b
-          }
         }
       }
     }
@@ -201,6 +171,30 @@ query project ($id: ID!) {
           alt
         }
       }
+      ... on SanityFigureThreeColumn {
+        _type
+        image1 {
+          asset {
+            url
+          }
+          caption
+          alt
+        }
+        image2 {
+          asset {
+            url
+          }
+          caption
+          alt
+        }
+        image3 {
+          asset {
+            url
+          }
+          caption
+          alt
+        }
+      }
       ... on SanityVideo {
         _type
         asset {
@@ -216,14 +210,14 @@ query project ($id: ID!) {
 import ProjectHero from '~/components/projects/ProjectHero'
 import ProjectGallery from '~/components/projects/ProjectGallery'
 import BlockContent from '~/components/BlockContent'
-import RelatedProjectItem from '~/components/projects/RelatedProjectItem'
+import ProjectItemSmall from '~/components/projects/ProjectItemSmall'
 
 export default {
   components: {
     ProjectHero,
     ProjectGallery,
     BlockContent,
-    RelatedProjectItem
+    ProjectItemSmall
   },
   metaInfo() {
     return {
@@ -319,7 +313,7 @@ export default {
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: var(--site-padding-m);
   .project {
     margin: 0;
   }

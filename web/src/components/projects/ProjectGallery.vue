@@ -12,6 +12,7 @@
           <p class="caption">{{ item.caption }}</p>
         </figcaption>
       </div>
+
       <div v-if="item._type === 'figureTwoColumn'" class="double" :class="item.columns">
         <figure>
           <img
@@ -25,13 +26,44 @@
         <figure>
           <img
             :src="$urlForImage(item.image2.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
-            :alt="item.image1.alt"
+            :alt="item.image2.alt"
           />
           <figcaption v-if="item.image2.caption">
             <p class="caption">{{ item.image2.caption }}</p>
           </figcaption>
         </figure>
       </div>
+
+      <div v-if="item._type === 'figureThreeColumn'" class="triple">
+        <figure>
+          <img
+            :src="$urlForImage(item.image1.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
+            :alt="item.image1.alt"
+          />
+          <figcaption v-if="item.image1.caption">
+            <p class="caption">{{ item.image1.caption }}</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            :src="$urlForImage(item.image2.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
+            :alt="item.image2.alt"
+          />
+          <figcaption v-if="item.image2.caption">
+            <p class="caption">{{ item.image2.caption }}</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            :src="$urlForImage(item.image3.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
+            :alt="item.image3.alt"
+          />
+          <figcaption v-if="item.image3.caption">
+            <p class="caption">{{ item.image3.caption }}</p>
+          </figcaption>
+        </figure>
+      </div>
+
       <div v-if="item._type === 'video'" class="video">
         <video controls>
           <source :src="item.asset.url" type="video/mp4" />
@@ -66,21 +98,7 @@ export default {
   padding: var(--site-padding-l);
   
   &-row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--site-padding);
-    margin-bottom: var(--site-padding);
-
-    &:nth-child(even) {
-      .double {
-        figure {
-          margin: 0;
-          &:nth-child(odd) {
-            margin: var(--site-padding-l) 0 0 0;
-          }
-        }
-      }
-    }
+    margin-bottom: var(--site-padding-m);
   }
 
   .single {
@@ -91,14 +109,7 @@ export default {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: var(--site-padding-l);
-
-    figure {
-      margin: var(--site-padding-l) 0 0 0;
-      &:nth-child(odd) {
-        margin: 0;
-      }
-    }
+    column-gap: var(--site-padding-m);
 
     &.onetwo {
       grid-template-columns: 1fr 2fr;
@@ -111,8 +122,27 @@ export default {
     }
   }
 
+  /*figure {
+    height: 100%;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }*/
+
+  .triple {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--site-padding-m);
+  }
+
   .single, .double, .video {
     margin-bottom: 2rem;
+  }
+
+  .double, .triple {
+    align-items: flex-start;
   }
 
   .video {
@@ -130,6 +160,7 @@ export default {
 
   figure {
     margin: 0;
+    position: relative;
   }
 
   img {

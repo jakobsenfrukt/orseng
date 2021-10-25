@@ -10,7 +10,6 @@
     </div>
     <div class="project-text">
       <h3 class="project-title">{{ project.title }}</h3>
-      <p class="project-lead" v-if="project.lead">{{ project.lead }}</p>
       <div class="project-arrow"></div>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`">Link</g-link>
