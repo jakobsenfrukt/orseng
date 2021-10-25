@@ -17,7 +17,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Slutten på URLen til prosjektet, eks. orseng.no/prosjekter/slug-kommer-her',
+      description: 'Slutten på URLen til prosjektet, eks. "orseng.no/prosjekter/slug-kommer-her". Må skrives med små bokstaver, og uten mellomrom eller ÆØÅ.',
       options: {
         source: 'title',
         maxLength: 96

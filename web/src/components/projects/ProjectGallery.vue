@@ -4,19 +4,19 @@
       <div v-if="item._type === 'figure'" class="single">
         <figure>
           <img
-            :src="$urlForImage(item.asset.url, $page.metadata.sanityOptions).width(1200).auto('format').url()"
+            :src="$urlForImage(item.asset.url, $page.metadata.sanityOptions).width(1600).auto('format').url()"
             :alt="item.alt"
           />
+          <figcaption v-if="item.caption">
+            <p class="caption">{{ item.caption }}</p>
+          </figcaption>
         </figure>
-        <figcaption v-if="item.caption">
-          <p class="caption">{{ item.caption }}</p>
-        </figcaption>
       </div>
 
       <div v-if="item._type === 'figureTwoColumn'" class="double" :class="item.columns">
         <figure>
           <img
-            :src="$urlForImage(item.image1.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
+            :src="$urlForImage(item.image1.asset.url, $page.metadata.sanityOptions).width(800).auto('format').url()"
             :alt="item.image1.alt"
           />
           <figcaption v-if="item.image1.caption">
@@ -25,7 +25,7 @@
         </figure>
         <figure>
           <img
-            :src="$urlForImage(item.image2.asset.url, $page.metadata.sanityOptions).width(600).auto('format').url()"
+            :src="$urlForImage(item.image2.asset.url, $page.metadata.sanityOptions).width(800).auto('format').url()"
             :alt="item.image2.alt"
           />
           <figcaption v-if="item.image2.caption">
@@ -102,43 +102,52 @@ export default {
   }
 
   .single {
-    grid-column: 2 / span 10;
+    width: 100%;
   }
 
   .double {
-    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     column-gap: var(--site-padding-m);
 
     &.onetwo {
-      grid-template-columns: 1fr 2fr;
+      figure:nth-child(1) {
+        grid-column: span 1;
+      }
+      figure:nth-child(2) {
+        grid-column: span 2;
+      }
     }
     &.twoone {
-      grid-template-columns: 2fr 1fr;
+      figure:nth-child(1) {
+        grid-column: span 2;
+      }
+      figure:nth-child(2) {
+        grid-column: span 1;
+      }
     }
     &.equal {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  /*figure {
+  figure {
     height: 100%;
     img {
+      display: block;
       height: 100%;
       object-fit: cover;
     }
-  }*/
+  }
 
   .triple {
-    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: var(--site-padding-m);
   }
 
-  .single, .double, .video {
-    margin-bottom: 2rem;
+  .single, .double, .triple, .video {
+    margin-bottom: var(--site-padding-m);
   }
 
   .double, .triple {
@@ -154,13 +163,23 @@ export default {
   figcaption .caption {
     width: 100%;
     max-width: 30rem;
-    font-size: var(--font-s);
-    padding: 1rem 0;
+    font-size: var(--font-xs);
+    color: var(--color-white);
+    padding: 0;
+    margin: 0;
   }
 
   figure {
     margin: 0;
     position: relative;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: var(--site-padding-l) var(--site-padding) var(--site-padding);
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
   }
 
   img {
