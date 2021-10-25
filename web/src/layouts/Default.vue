@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout" :style="cssVars">
     <Header :overlay="overlay" />
     <MiniHeader />
     <transition name="fade" appear>
@@ -67,11 +67,10 @@ export default {
     palette: Object,
     overlay: Boolean
   },
-  methods: {
-    changeColor() {
-      let cssVars;
+  computed: {
+    cssVars() {
       if (this.palette) {
-        cssVars = {
+        return {
           '--color-background-light': this.palette.light.bgColor ? this.palette.light.bgColor.hex : 'var(--color-white)',
           '--color-text-light': this.palette.light.textColor ? this.palette.light.textColor.hex : 'var(--color-white)',
           '--color-detail-light': this.palette.light.detailColor ? this.palette.light.detailColor.hex : 'var(--color-black)',
@@ -82,7 +81,7 @@ export default {
         }
       } else if (this.$static.settings.themePalette) {
         const palette = this.$static.settings.themePalette;
-        cssVars = {
+        return {
           '--color-background-light': palette.light.bgColor ? palette.light.bgColor.hex : 'var(--color-white)',
           '--color-text-light': palette.light.textColor ? palette.light.textColor.hex : 'var(--color-white)',
           '--color-detail-light': palette.light.detailColor ? palette.light.detailColor.hex : 'var(--color-black)',
@@ -92,8 +91,11 @@ export default {
           '--color-detail-dark': palette.dark.detailColor ? palette.dark.detailColor.hex : 'var(--color-white)'
         }
       }
-
-      Object.entries(cssVars).forEach(entry => {
+    }
+  },
+  methods: {
+    changeColor() {
+      Object.entries(this.cssVars).forEach(entry => {
         const [key, value] = entry;
         document.documentElement.style.setProperty(key, value)
       })
