@@ -146,8 +146,8 @@ export default {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 2rem;
-      left: 2rem;
+      right: var(--spacing-m);
+      left: var(--spacing-m);
       display: flex;
       justify-content: space-between;
       .arrow {
@@ -188,7 +188,7 @@ export default {
   }
   &-text {
     position: absolute;
-    bottom: 6rem;
+    bottom: var(--spacing-xxl);
     width: 100%;
     .lead {
       color: var(--color-white);
@@ -220,6 +220,24 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    position: relative;
+    height: 90vh;
+    color: var(--color-white);
+    &-image {
+      height: 90vh;
+      animation: zoomIn 1s ease-out forwards;
+      background: var(--color-black);
+      &-item {
+        position: absolute;
+        width: 100%;
+        height: 90vh;
+      }
+    }
   }
 }
 </style>

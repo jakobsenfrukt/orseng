@@ -15,10 +15,13 @@
 
   --letter-spacing: .08em;
 
-  --site-padding: 1rem;
-  --site-padding-m: 2rem;
-  --site-padding-l: 3rem;
-  --site-padding-xl: 3.5rem;
+  --spacing: 1rem;
+  --spacing-s: 1.5rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3rem;
+  --spacing-xl: 3.5rem;
+  --spacing-xxl: 6rem;
+  
   --border-width: 2px;
   --border-width-thin: 1px;
 
@@ -57,12 +60,11 @@ body[data-theme="dark"] {
     --font-xl: 3rem;
     --font-xxl: 5rem;
 
-    --site-padding: .5rem;
-    --site-padding-l: 2rem;
-
-    --site-padding: .5rem;
-    --site-padding-m: 1rem;
-    --site-padding-l: 1.5rem;
-    --site-padding-xl: 2.5rem;
+    --spacing: .5rem;
+    --spacing-s: .75rem;
+    --spacing-m: 1rem;
+    --spacing-l: 1.5rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 4rem;
   }
 }

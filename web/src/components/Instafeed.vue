@@ -23,7 +23,7 @@ export default {
 .instafeed {
   width: 100%;
   position: relative;
-  padding: 6rem var(--site-padding-l) 3rem;
+  padding: 6rem var(--spacing-l) 3rem;
 
   &-heading {
     display: flex;

@@ -45,7 +45,7 @@ export default {
   position: relative;
   border-radius: calc(var(--radius)/3);
   transition: all .2s ease-in-out;
-  margin: 0 auto var(--site-padding-xl);
+  margin: 0 auto var(--spacing-xl);
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +64,7 @@ export default {
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;
-    margin: var(--site-padding) auto;
+    margin: var(--spacing) auto;
     line-height: 1;
   }
   &-lead {

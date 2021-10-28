@@ -95,10 +95,10 @@ export default {
 <style lang="scss" scoped>
 .project-gallery {
   width: 100%;
-  padding: var(--site-padding-l);
+  padding: var(--spacing-l);
   
   &-row {
-    margin-bottom: var(--site-padding-m);
+    margin-bottom: var(--spacing-m);
   }
 
   .single {
@@ -108,7 +108,7 @@ export default {
   .double {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: var(--site-padding-m);
+    column-gap: var(--spacing-m);
 
     &.onetwo {
       figure:nth-child(1) {
@@ -143,11 +143,11 @@ export default {
   .triple {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: var(--site-padding-m);
+    column-gap: var(--spacing-m);
   }
 
   .single, .double, .triple, .video {
-    margin-bottom: var(--site-padding-m);
+    margin-bottom: var(--spacing-m);
   }
 
   .double, .triple {
@@ -178,7 +178,7 @@ export default {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: var(--site-padding-l) var(--site-padding) var(--site-padding);
+    padding: var(--spacing-l) var(--spacing) var(--spacing);
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
   }
 
@@ -193,7 +193,7 @@ export default {
       display: block;
     }
     figure {
-      margin-bottom: var(--site-padding-l);
+      margin-bottom: var(--spacing-l);
     }
     figcaption {
       position: static;

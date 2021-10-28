@@ -58,7 +58,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
-  padding: var(--site-padding);
+  padding: var(--spacing);
   position: absolute;
   z-index: 1000;
   width: 100%;
@@ -84,7 +84,7 @@ export default {
   &-main {
     display: flex;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: var(--spacing-s) var(--spacing-m);
   }
 
   &-link {
@@ -129,13 +129,13 @@ export default {
   &-left {
     justify-content: flex-start;
     .nav-link {
-      margin: 0 var(--site-padding-l) 0 0;
+      margin: 0 var(--spacing-l) 0 0;
     }
   }
   &-right {
     justify-content: flex-end;
     .nav-link {
-      margin: 0 0 0 var(--site-padding-l);
+      margin: 0 0 0 var(--spacing-l);
     }
   }
   &-mobile {

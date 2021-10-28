@@ -76,7 +76,6 @@ export default {
 
       Object.entries(cssVars).forEach(entry => {
         const [key, value] = entry;
-        document.documentElement.style.setProperty(key, value)
         document.body.style.setProperty(key, value)
       })
     }
@@ -92,7 +91,7 @@ export default {
   margin: 0;
   width: 100%;
   min-height: 101vh;
-  padding: 6rem var(--site-padding-l) 3rem;
+  padding: 6rem var(--spacing-l) 3rem;
   &-wrapper {
     width: 100%;
     max-width: 1600px;
@@ -209,6 +208,7 @@ export default {
     &-title {
       width: 100%;
       text-align: center;
+      margin-bottom: -.25em;
     }
     &-text {
       width: 100%;

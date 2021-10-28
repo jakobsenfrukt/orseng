@@ -126,7 +126,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: var(--site-padding);
+  column-gap: var(--spacing);
   margin: 0 auto;
 }
 </style>

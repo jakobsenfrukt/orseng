@@ -138,14 +138,14 @@ export default {
   &-section {
     max-width: 54rem;
     margin: 0 auto 5rem;
-    padding: 0 var(--site-padding-l);
+    padding: 0 var(--spacing-l);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
   }
 }
 .studio {
-  padding: 10rem var(--site-padding-l) 0;
+  padding: 10rem var(--spacing-l) 0;
 }
 .grid {
   max-width: 54rem;
@@ -154,7 +154,7 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 2rem;
   align-items: flex-start;
-  padding: 0 var(--site-padding-l);
+  padding: 0 var(--spacing-l);
   .about-heading {
     text-align: left;
   }
@@ -173,7 +173,7 @@ export default {
     font-size: var(--font-m);
     font-weight: 300;
     line-height: 1.2;
-    padding-left: var(--site-padding-m);
+    padding-left: var(--spacing-m);
     margin-bottom: .4rem;
     position: relative;
     &:before {
@@ -199,7 +199,7 @@ export default {
     font-size: var(--font-m);
     font-weight: 300;
     line-height: 1.2;
-    padding-left: var(--site-padding-m);
+    padding-left: var(--spacing-m);
     margin-bottom: .4rem;
     position: relative;
     &:before {
@@ -225,6 +225,19 @@ export default {
   }
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 800px) {
+  .about {
+    &-lead {
+      margin: 0 auto 4rem;
+      font-size: var(--font-m);
+    }
+  }
+  .services, .clients {
+    &-item {
+      padding-left: var(--spacing-xl);
+    }
   }
 }
 </style>

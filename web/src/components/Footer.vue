@@ -114,7 +114,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: var(--site-padding-l);
+  padding: var(--spacing-l);
 
   font-family: var(--font-main);
   font-size: var(--font-s);
@@ -147,8 +147,8 @@ export default {
     }
     &-grid {
       grid-template-columns: 1fr;
-      gap: var(--site-padding-l);
-      padding: 0 0 var(--site-padding-l);
+      gap: var(--spacing-l);
+      padding: 0 0 var(--spacing-l);
     }
     &-label {
       margin: 0 auto 2rem;

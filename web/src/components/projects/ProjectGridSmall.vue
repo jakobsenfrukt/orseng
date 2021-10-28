@@ -120,10 +120,10 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: var(--site-padding-m);
+  column-gap: var(--spacing-m);
   align-items: flex-start;
   margin: 0 auto;
-  padding: var(--site-padding-l);
+  padding: var(--spacing-l);
 }
 
 @media (max-width: 1200px) {

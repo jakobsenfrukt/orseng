@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .project-hero {
   position: relative;
-  padding: 6.5rem var(--site-padding-l) 3rem;
+  padding: 6.5rem var(--spacing-l) 3rem;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: flex-end;
@@ -158,7 +158,7 @@ export default {
       order: 1;
       grid-column: span 1;
       height: auto;
-      margin: var(--site-padding-m) auto;
+      margin: var(--spacing-m) auto;
     }
     &-lead {
       order: 4;

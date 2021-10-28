@@ -241,7 +241,7 @@ export default {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding: 0 var(--site-padding-l);
+    padding: 0 var(--spacing-l);
     font-size: 1.2rem;
     max-width: 36rem;
     
@@ -261,7 +261,7 @@ export default {
     justify-content: center;
     text-align: center;
     column-gap: 5rem;
-    row-gap: var(--site-padding-l);
+    row-gap: var(--spacing-l);
     width: 100%;
     margin: 5rem auto;
 
@@ -287,7 +287,7 @@ export default {
 }
 .related {
   margin: 6rem auto;
-  padding: 0 var(--site-padding-l);
+  padding: 0 var(--spacing-l);
 }
 .related-heading {
   display: flex;
@@ -314,7 +314,7 @@ export default {
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--site-padding-m);
+  gap: var(--spacing-m);
   .project {
     margin: 0;
   }
