@@ -6,6 +6,25 @@
   </Layout>
 </template>
 
+<page-query>
+query {
+  metadata {
+    sanityOptions {
+      projectId
+      dataset
+    }
+  }
+  settings: sanitySiteSettings(id: "siteSettings") {
+    description
+    ogimg {
+      asset {
+        url
+      }
+    }
+  }
+}
+</page-query>
+
 <script>
 import Hero from '@/components/Hero'
 import Instafeed from '@/components/Instafeed'
@@ -17,8 +36,22 @@ export default {
     Instafeed,
     ProjectGrid
   },
-  metaInfo: {
-    title: 'Ørseng Interiørarkitektur'
+  metaInfo() {
+    return {
+      title: 'Forside',
+      meta: [
+        {
+          name: 'description',
+          key: 'description',
+          content: this.$page.settings.description
+        },
+        {
+          name: 'og:image',
+          key: 'og:image',
+          content: this.$page.settings.ogimg.asset.url
+        }
+      ]
+    }
   }
 }
 </script>

@@ -1,5 +1,7 @@
 <svg width="62" height="58" viewBox="0 0 62 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="62" height="8" fill="black"/>
-<rect y="25" width="62" height="8" fill="black"/>
-<rect y="50" width="62" height="8" fill="black"/>
+<path d="M62 0H0V8H62V0Z" fill="black"/>
+<path d="M62 25H0V33H62V25Z" fill="black"/>
+<path d="M62 50H0V58H62V50Z" fill="black"/>
+<path d="M59.7339 52.077L7.92297 0.266113L2.26612 5.92297L54.077 57.7339L59.7339 52.077Z" fill="black"/>
+<path d="M7.92296 57.7339L59.7339 5.92297L54.077 0.266119L2.2661 52.077L7.92296 57.7339Z" fill="black"/>
 </svg>

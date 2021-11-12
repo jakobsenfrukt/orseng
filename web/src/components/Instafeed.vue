@@ -50,10 +50,10 @@ export default {
 }
 .instalink {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 6rem;
+  left: var(--spacing-l);
+  right: var(--spacing-l);
+  bottom: 3rem;
   z-index: 2;
 }
 </style>

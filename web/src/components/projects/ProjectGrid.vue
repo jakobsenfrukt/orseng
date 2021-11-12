@@ -5,6 +5,9 @@
       :key="project.id"
       :project="project.node"
     />
+    <div v-if="$static.projects.edges.length > limit" class="project-grid__show-more">
+      <g-link to="/prosjekter">Se alle prosjekter</g-link>
+    </div>
   </section>
 </template>
 
@@ -115,7 +118,7 @@ export default {
   props: {
     limit: {
       type: Number,
-      default: 12
+      default: 6
     }
   }
 }
@@ -128,5 +131,22 @@ export default {
   grid-template-columns: 1fr;
   column-gap: var(--spacing);
   margin: 0 auto;
+
+  &__show-more {
+    a {
+      display: block;
+      width: 24rem;
+      max-width: 90%;
+      background: var(--color-text);
+      color: var(--color-background);
+      padding: 1rem 2rem;
+      margin: 0 auto;
+      text-align: center;
+      transition: opacity .3s ease;
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
 }
 </style>

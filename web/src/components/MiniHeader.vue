@@ -1,25 +1,31 @@
 <template>
-  <header class="site-header-wrapper" :class="{open: menuOpen}">
+  <header class="site-header-wrapper">
     <div class="site-header mini" :class="{inview: isInView}">
       <nav class="nav nav-main nav-left">
         <g-link class="nav-link" to="/prosjekter">Prosjekter</g-link>
         <g-link class="nav-link" to="/studio">Studio</g-link>
       </nav>
-      <g-link class="logo" to="/">
+      <g-link class="logo" to="/" :class="{open: menuOpen}">
         <MiniLogo />
       </g-link>
       <nav class="nav nav-main nav-right">
         <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
         <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
-        <div role="button" @click="menuOpen = !menuOpen"><MenuIcon class="menu-toggle nav-icon" /></div>
       </nav>
 
-      <nav class="nav-mobile">
-        <g-link class="nav-link" to="/prosjekter">Prosjekter</g-link>
-        <g-link class="nav-link" to="/studio">Studio</g-link>
-        <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
-        <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
-      </nav>
+      <div class="nav-mobile-wrapper" :class="{open: menuOpen}">
+        <div class="menu-toggle-wrapper">
+          <div role="button" @click="toggleMenu" class="menu-toggle">
+            <MenuIcon class="menu-toggle-icon" :open="menuOpen" />
+          </div>
+        </div>
+        <nav class="nav-mobile">
+          <g-link class="nav-mobile-link" to="/prosjekter">Prosjekter</g-link>
+          <g-link class="nav-mobile-link" to="/studio">Studio</g-link>
+          <span class="nav-mobile-link" @click="toAnchor('#kontakt')">Kontakt</span>
+          <a class="nav-mobile-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+        </nav>
+      </div>
     </div>
 
     <IntersectionObserver
@@ -43,8 +49,8 @@ export default {
   },
   data() {
     return {
-      menuOpen: false,
-      isInView: false
+      isInView: false,
+      menuOpen: false
     }
   },
   methods: {
@@ -57,6 +63,14 @@ export default {
     },
     onEnterViewport(value) {
       this.isInView = value;
+    },
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+      if (this.menuOpen) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
     }
   }
 }
@@ -108,7 +122,11 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 100;
+  z-index: 1000;
+
+  &.open {
+    color: var(--color-background);
+  }
 }
 
 .nav {
@@ -160,42 +178,87 @@ export default {
       margin: 0 0 0 var(--spacing-l);
     }
   }
-  &-mobile {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    height: 100%;
-    background: var(--color-text);
-    color: var(--color-background);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+}
 
-    display: none;
+@media (max-width: 1000px) {
+  .nav {
+    padding: 1rem 2rem;
+    &-main {
+      .nav-link {
+        display: none;
+      }
+    }
+  }
+}
 
-    .nav-link {
-      display: block;
-      margin-bottom: 1.5rem;
-      font-size: var(--font-m);
+
+
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: var(--color-text);
+  color: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  display: none;
+
+  &-link {
+    position: relative;
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: var(--font-m);
+    font-family: var(--font-main);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    cursor: pointer;
+
+    &.active--exact {
+      font-style: italic;
+      cursor: default;
+      &:hover {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &-wrapper {
+    &.open {
+      height: 100vh;
     }
   }
 }
 .menu-toggle {
-  width: 1.4rem;
-  position: relative;
-  z-index: 100;
+  width: 4rem;
+  height: 1.6rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--spacing);
+  z-index: 101;
   cursor: pointer;
+
+  &-icon {
+    width: 1.4rem;
+    position: absolute;
+    top: 50%;
+  }
 
   display: none;
 }
 
 @media (max-width: 1000px) {
   .nav {
-    padding: 1rem 2rem;
     &-main {
       .nav-link {
         display: none;
@@ -209,15 +272,13 @@ export default {
   }
   .open {
     color: var(--color-background);
-    .nav {
-      &-mobile {
-        opacity: 1;
-        transform: translateY(0);
-        animation: menuEnter .3s linear forwards;
+    .nav-mobile {
+      opacity: 1;
+      transform: translateY(0);
+      animation: menuEnter .3s linear forwards;
 
-        .nav-link {
-          animation: menuItemEnter .3s linear forwards;
-        }
+      &-link {
+        animation: menuItemEnter .3s linear forwards;
       }
     }
   }

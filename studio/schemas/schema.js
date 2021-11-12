@@ -15,7 +15,6 @@ import contact from './documents/contact'
 // Object types
 import source from './objects/source'
 import figure from './objects/figure'
-import video from './objects/video'
 import figureTwoColumn from './objects/figureTwoColumn'
 import figureThreeColumn from './objects/figureThreeColumn'
 import simplePortableText from './objects/simplePortableText'
@@ -35,7 +34,6 @@ export default createSchema({
     /* Your types here! */
     source,
     figure,
-    video,
     figureTwoColumn,
     figureThreeColumn,
     simplePortableText,

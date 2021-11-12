@@ -195,12 +195,6 @@ query project ($id: ID!) {
           alt
         }
       }
-      ... on SanityVideo {
-        _type
-        asset {
-          url
-        }
-      }
     }
   }
 }
@@ -226,6 +220,11 @@ export default {
         {
           name: 'description',
           content: this.$page.project.lead ? this.$page.project.lead : ' '
+        },
+        {
+          name: 'og:image',
+          key: 'og:image',
+          content: this.$page.project.mainImage.asset.url
         }
       ]
     }

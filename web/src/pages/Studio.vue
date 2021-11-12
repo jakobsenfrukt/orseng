@@ -1,9 +1,11 @@
 <template>
   <Layout class="about">
     <section class="about-section studio">
-      <h2 class="about-heading bio-heading" v-if="$page.about.studio.title">{{ $page.about.studio.title }}</h2>
       <p class="lead about-lead">{{ $page.about.lead }}</p>
-      <block-content :blocks="$page.about.studio._rawText" />
+      <div class="about-text">
+        <h2 class="about-heading bio-heading" v-if="$page.about.studio.title">{{ $page.about.studio.title }}</h2>
+        <block-content :blocks="$page.about.studio._rawText" />
+      </div>
       <img
         class="portrait"
         v-if="$page.about.studio.mainImage"
@@ -30,14 +32,16 @@
       </section>
     </div>
     <section class="about-section bio">
-      <h2 class="about-heading bio-heading">{{ $page.about.bio.title }}</h2>
       <img
         class="portrait"
         v-if="$page.about.bio.mainImage"
         :alt="$page.about.bio.mainImage.alt"
         :src="$urlForImage($page.about.bio.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
       />
-      <block-content :blocks="$page.about.bio._rawText" />
+      <div class="about-text">
+        <h2 class="about-heading bio-heading">{{ $page.about.bio.title }}</h2>
+        <block-content :blocks="$page.about.bio._rawText" />
+      </div>
     </section>
   </Layout>
 </template>
@@ -104,6 +108,14 @@ query {
       }
     }
   }
+  settings: sanitySiteSettings(id: "siteSettings") {
+    description
+    ogimg {
+      asset {
+        url
+      }
+    }
+  }
 }
 </page-query>
 
@@ -114,8 +126,22 @@ export default {
   components: {
     BlockContent
   },
-  metaInfo: {
-    title: 'Studio'
+  metaInfo() {
+    return {
+      title: 'Studio',
+      meta: [
+        {
+          name: 'description',
+          key: 'description',
+          content: this.$page.settings.description
+        },
+        {
+          name: 'og:image',
+          key: 'og:image',
+          content: this.$page.settings.ogimg.asset.url
+        }
+      ]
+    }
   }
 }
 </script>
@@ -123,8 +149,6 @@ export default {
 <style lang="scss" scoped>
 .about {
   &-heading {
-    grid-column: 1 / -1;
-    text-align: center;
     font-size: var(--font-s);
     text-transform: uppercase;
     font-weight: 600;

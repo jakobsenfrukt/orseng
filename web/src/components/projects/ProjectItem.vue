@@ -162,10 +162,10 @@ export default {
   }*/
   &-link {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 6rem;
+    left: var(--spacing-l);
+    right: var(--spacing-l);
+    bottom: 3rem;
     opacity: 0;
     overflow: hidden;
     text-indent: -9999px;
@@ -214,6 +214,7 @@ export default {
       width: 100%;
       margin: 0;
       padding: .5rem 1rem;
+      text-align: center;
     }
     &:nth-of-type(even) {
       .project-text {
