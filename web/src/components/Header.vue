@@ -54,11 +54,11 @@ export default {
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
-      if (this.menuOpen) {
+      /*if (this.menuOpen) {
         document.body.style.overflow = 'hidden'
       } else {
         document.body.style.overflow = 'auto'
-      }
+      }*/
     }
   }
 }
