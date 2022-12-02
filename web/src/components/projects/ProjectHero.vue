@@ -6,12 +6,21 @@
     <div class="project-hero-image">
       <img
         :alt="project.mainImage.alt"
-        :src="$urlForImage(project.mainImage, $static.metadata.sanityOptions).width(1800).auto('format').url()"
+        :src="
+          $urlForImage(project.mainImage, $static.metadata.sanityOptions)
+            .width(1800)
+            .auto('format')
+            .url()
+        "
         class="project-hero-image-item"
       />
     </div>
     <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
-      <h1 class="project-hero-title project-hero-title-2"><template v-if="project.categories.length">{{ project.categories[0].title }} &mdash; </template>{{ project.publishedAt }}</h1>
+      <h1 class="project-hero-title project-hero-title-2">
+        <template v-if="project.categories.length"
+          >{{ project.categories[0].title }} &mdash; </template
+        >{{ project.publishedAt }}
+      </h1>
     </div>
     <p class="lead project-hero-lead" v-if="project.lead">{{ project.lead }}</p>
   </section>
@@ -31,9 +40,9 @@ query {
 <script>
 export default {
   props: {
-    project: Object
-  }
-}
+    project: Object,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -76,7 +85,7 @@ export default {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 80vh;
+    width: 90vh;
     &-wrapper {
       width: var(--font-xl);
       height: 80vh;
@@ -85,12 +94,13 @@ export default {
       animation: slideUp 2s ease forwards;
     }
     &-2 {
-      transform: rotate(90deg) translateX(-12%) translateY(-1.5rem);
+      transform: rotate(90deg) translateX(-9%) translateY(-1rem);
       transform-origin: 0 100%;
       position: absolute;
       top: 0;
       bottom: auto;
-      opacity: .24;
+      opacity: 0.24;
+      font-size: 8vh;
     }
     &-wrapper-2 {
       align-self: flex-start;
