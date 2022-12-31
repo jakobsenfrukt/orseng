@@ -14,7 +14,14 @@
       <h3 class="project-title">{{ project.title }}</h3>
       <div class="project-arrow"></div>
     </div>
-    <NuxtLink class="project-link" :to="`/prosjekter/${project.slug.current}`"
+    <NuxtLink
+      class="project-link"
+      :to="
+        localePath({
+          name: 'prosjekter-slug',
+          params: { slug: project.slug.current },
+        })
+      "
       >Link</NuxtLink
     >
   </article>

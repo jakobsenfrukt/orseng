@@ -3,7 +3,7 @@
     <h2 class="contact-heading">{{ data.contact.title }}</h2>
     <div class="contact-grid">
       <div>
-        <h3 class="contact-label">Kontakt</h3>
+        <h3 class="contact-label">{{ $t("contact") }}</h3>
         <a
           class="contact-link"
           :href="`tel:${data.contact.phone}`"
@@ -18,7 +18,7 @@
         ><br />
       </div>
       <div>
-        <h3 class="contact-label">Sosiale medier</h3>
+        <h3 class="contact-label">{{ $t("socialMedia") }}</h3>
         <a class="contact-link" :href="data.contact.instagram" target="_blank"
           >Instagram</a
         ><br />
@@ -30,22 +30,23 @@
         ><br />
       </div>
       <div>
-        <h3 class="contact-label">Adresse</h3>
+        <h3 class="contact-label">{{ $t("address") }}</h3>
         <span class="contact-text">
           <BlockContent :blocks="data.contact.address" />
         </span>
-        <a class="contact-link" :href="data.contact.maplink" target="_blank"
-          >Se i kart</a
+        <a class="contact-link" :href="data.contact.maplink" target="_blank">{{
+          $t("viewMap")
+        }}</a
         ><br />
       </div>
     </div>
     <div class="footer-grid">
       <div class="toplink">
-        <span role="button" @click="toTop()">Til toppen</span>
+        <span role="button" @click="toTop()">{{ $t("toTheTop") }}</span>
       </div>
       <ToggleTheme class="theme" />
       <div class="credits">
-        Nettside av <a href="https://jakobsenfrukt.no">JF&amp;G</a>
+        {{ $t("websiteBy") }} <a href="https://jakobsenfrukt.no">JF&amp;G</a>
       </div>
     </div>
   </footer>

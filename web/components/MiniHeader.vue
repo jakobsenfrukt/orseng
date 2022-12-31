@@ -1,29 +1,56 @@
 <template>
   <header class="site-header-wrapper">
-    <div class="site-header mini" :class="{inview: isInView}">
+    <div class="site-header mini" :class="{ inview: isInView }">
       <nav class="nav nav-main nav-left">
-        <NuxtLink class="nav-link" to="/prosjekter">Prosjekter</NuxtLink>
-        <NuxtLink class="nav-link" to="/studio">Studio</NuxtLink>
+        <NuxtLink class="nav-link" :to="localePath('/prosjekter')">{{
+          $t("projects")
+        }}</NuxtLink>
+        <NuxtLink class="nav-link" :to="localePath('/studio')">Studio</NuxtLink>
       </nav>
-      <NuxtLink class="logo" to="/" :class="{open: menuOpen}">
+      <NuxtLink class="logo" :to="localePath('/')" :class="{ open: menuOpen }">
         <MiniLogo />
       </NuxtLink>
       <nav class="nav nav-main nav-right">
-        <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
-        <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+        <NuxtLink class="nav-link" :to="otherLocalePath()">{{
+          locale === "no" ? "English" : "Norsk"
+        }}</NuxtLink>
+        <span class="nav-link" @click="toAnchor('#kontakt')">{{
+          $t("contact")
+        }}</span>
+        <a
+          class="nav-link"
+          href="https://instagram.com/orseng.interiorarkitektur"
+          target="_blank"
+          >Instagram</a
+        >
       </nav>
 
-      <div class="nav-mobile-wrapper" :class="{open: menuOpen}">
+      <div class="nav-mobile-wrapper" :class="{ open: menuOpen }">
         <div class="menu-toggle-wrapper">
           <div role="button" @click="toggleMenu" class="menu-toggle">
             <MenuIcon class="menu-toggle-icon" :open="menuOpen" />
           </div>
         </div>
         <nav class="nav-mobile">
-          <NuxtLink class="nav-mobile-link" to="/prosjekter">Prosjekter</NuxtLink>
-          <NuxtLink class="nav-mobile-link" to="/studio">Studio</NuxtLink>
-          <span class="nav-mobile-link" @click="toAnchor('#kontakt')">Kontakt</span>
-          <a class="nav-mobile-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+          <NuxtLink class="nav-mobile-link" :to="localePath('/prosjekter')">{{
+            $t("projects")
+          }}</NuxtLink>
+          <NuxtLink class="nav-mobile-link" :to="localePath('/studio')"
+            >Studio</NuxtLink
+          >
+          <span class="nav-mobile-link" @click="toAnchor('#kontakt')"
+            >Kontakt</span
+          >
+          <a
+            class="nav-mobile-link"
+            href="https://instagram.com/orseng.interiorarkitektur"
+            target="_blank"
+            >Instagram</a
+          >
+          <br />
+          <NuxtLink class="nav-mobile-link" :to="otherLocalePath()">{{
+            locale === "no" ? "English" : "Norsk"
+          }}</NuxtLink>
         </nav>
       </div>
     </div>
@@ -37,29 +64,40 @@
 </template>
 
 <script>
-import MiniLogo from '@/components/graphics/logo/MiniLogo.vue'
-import MenuIcon from '@/components/graphics/icons/MenuIcon.vue'
-import IntersectionObserver from '~/components/tools/IntersectionObserver'
+import MiniLogo from "@/components/graphics/logo/MiniLogo.vue";
+import MenuIcon from "@/components/graphics/icons/MenuIcon.vue";
+import IntersectionObserver from "~/components/tools/IntersectionObserver";
 
 export default {
   components: {
     MiniLogo,
     MenuIcon,
-    IntersectionObserver
+    IntersectionObserver,
+  },
+  setup() {
+    const switchLocalePath = useSwitchLocalePath();
+    const { locale } = useI18n();
+
+    const otherLocalePath = () => {
+      const otherLocale = locale.value === "no" ? "en" : "no";
+      return switchLocalePath(otherLocale);
+    };
+
+    return { locale, otherLocalePath };
   },
   data() {
     return {
       isInView: false,
-      menuOpen: false
-    }
+      menuOpen: false,
+    };
   },
   methods: {
     toAnchor(anchor) {
       document.querySelector(anchor).scrollIntoView({
-          behavior: 'smooth'
-      })
+        behavior: "smooth",
+      });
       // close menu if on mobile
-      this.menuOpen = false
+      this.menuOpen = false;
     },
     onEnterViewport(value) {
       this.isInView = value;
@@ -71,9 +109,9 @@ export default {
       } else {
         document.body.style.overflow = 'auto'
       }*/
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -90,13 +128,15 @@ export default {
   background: var(--color-background);
   transform: translateY(-100%);
   opacity: 0;
-  transition: color .5s linear, background-color .5s linear, transform .3s ease, opacity .3s ease;
+  transition: color 0.5s linear, background-color 0.5s linear,
+    transform 0.3s ease, opacity 0.3s ease;
   //animation: fadeDown 1s ease forwards;
 
   &.inview {
     transform: translateY(0);
     opacity: 1;
-    transition: color .5s linear, background-color .5s linear, transform .5s ease, opacity .5s ease;
+    transition: color 0.5s linear, background-color 0.5s linear,
+      transform 0.5s ease, opacity 0.5s ease;
   }
 
   &-wrapper {
@@ -151,17 +191,17 @@ export default {
       content: "";
       display: block;
       position: absolute;
-      bottom: -.1em;
+      bottom: -0.1em;
       left: 0;
       height: var(--border-width);
       width: 0;
       background: currentColor;
-      transition: width .3s ease;
+      transition: width 0.3s ease;
     }
     &:hover {
       &:after {
         width: 100%;
-        transition: width .36s ease;
+        transition: width 0.36s ease;
       }
     }
   }
@@ -190,8 +230,6 @@ export default {
     }
   }
 }
-
-
 
 .nav-mobile {
   position: fixed;
@@ -275,10 +313,10 @@ export default {
     .nav-mobile {
       opacity: 1;
       transform: translateY(0);
-      animation: menuEnter .3s linear forwards;
+      animation: menuEnter 0.3s linear forwards;
 
       &-link {
-        animation: menuItemEnter .3s linear forwards;
+        animation: menuItemEnter 0.3s linear forwards;
       }
     }
   }

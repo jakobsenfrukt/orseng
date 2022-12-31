@@ -26,7 +26,7 @@
           <p>{{ data.project.publishedAt }}</p>
         </div>-->
         <div class="project-client" v-if="data.project.projectDetails.client">
-          <span>Kunde</span>
+          <span>{{ $t("customer") }}</span>
           <p>{{ data.project.projectDetails.client }}</p>
         </div>
         <!--<div class="project-location" v-if="data.project.projectDetails.location">
@@ -37,7 +37,7 @@
           class="project-collaborators"
           v-if="data.project.projectDetails.collaborators"
         >
-          <span>Samarbeidspartnere</span>
+          <span>{{ $t("collaborators") }}</span>
           <ul class="project-collaborators-list">
             <li
               v-for="(collaborator, index) in data.project.projectDetails
@@ -52,7 +52,7 @@
           class="project-photographer"
           v-if="data.project.projectDetails.photographer"
         >
-          <span>Fotograf</span>
+          <span>{{ $t("photographer") }}</span>
           <p>{{ data.project.projectDetails.photographer }}</p>
         </div>
       </div>
@@ -64,7 +64,7 @@
 
       <div class="related" v-if="data.project.relatedProjects.length">
         <div class="related-heading">
-          <h2>Relaterte prosjekter</h2>
+          <h2>{{ $t("relatedProjects") }}</h2>
         </div>
         <div class="related-grid">
           <ProjectItemSmall

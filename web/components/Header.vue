@@ -1,56 +1,94 @@
 <template>
-  <header class="site-header" :class="{overlay: overlay}">
+  <header class="site-header" :class="{ overlay: overlay }">
     <nav class="nav nav-main nav-left">
-      <NuxtLink class="nav-link" to="/prosjekter">Prosjekter</NuxtLink>
-      <NuxtLink class="nav-link" to="/studio">Studio</NuxtLink>
+      <NuxtLink class="nav-link" :to="localePath('/prosjekter')">{{
+        $t("projects")
+      }}</NuxtLink>
+      <NuxtLink class="nav-link" :to="localePath('/studio')">Studio</NuxtLink>
     </nav>
-    <NuxtLink class="logo" to="/" :class="{open: menuOpen}">
+    <NuxtLink class="logo" :to="localePath('/')" :class="{ open: menuOpen }">
       <Logo />
     </NuxtLink>
     <nav class="nav nav-main nav-right">
-      <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
-      <a class="nav-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+      <NuxtLink class="nav-link" :to="otherLocalePath()">{{
+        locale === "no" ? "English" : "Norsk"
+      }}</NuxtLink>
+      <span class="nav-link" @click="toAnchor('#kontakt')">{{
+        $t("contact")
+      }}</span>
+      <a
+        class="nav-link"
+        href="https://instagram.com/orseng.interiorarkitektur"
+        target="_blank"
+        >Instagram</a
+      >
     </nav>
-    <div class="nav-mobile-wrapper" :class="{open: menuOpen}">
+    <div class="nav-mobile-wrapper" :class="{ open: menuOpen }">
       <div class="menu-toggle-wrapper">
         <div role="button" @click="toggleMenu" class="menu-toggle">
           <MenuIcon class="menu-toggle-icon" :open="menuOpen" />
         </div>
       </div>
       <nav class="nav-mobile">
-        <NuxtLink class="nav-mobile-link" to="/prosjekter">Prosjekter</NuxtLink>
-        <NuxtLink class="nav-mobile-link" to="/studio">Studio</NuxtLink>
-        <span class="nav-mobile-link" @click="toAnchor('#kontakt')">Kontakt</span>
-        <a class="nav-mobile-link" href="https://instagram.com/orseng.interiorarkitektur" target="_blank">Instagram</a>
+        <NuxtLink class="nav-mobile-link" :to="localePath('/prosjekter')">{{
+          $t("projects")
+        }}</NuxtLink>
+        <NuxtLink class="nav-mobile-link" :to="localePath('/studio')"
+          >Studio</NuxtLink
+        >
+        <span class="nav-mobile-link" @click="toAnchor('#kontakt')">{{
+          $t("contact")
+        }}</span>
+        <a
+          class="nav-mobile-link"
+          href="https://instagram.com/orseng.interiorarkitektur"
+          target="_blank"
+          >Instagram</a
+        >
+        <br />
+        <NuxtLink class="nav-mobile-link" :to="otherLocalePath()">{{
+          locale === "no" ? "English" : "Norsk"
+        }}</NuxtLink>
       </nav>
     </div>
   </header>
 </template>
 
 <script>
-import Logo from '@/components/graphics/logo/Logo.vue'
-import MenuIcon from '@/components/graphics/icons/MenuIcon.vue'
+import Logo from "@/components/graphics/logo/Logo.vue";
+import MenuIcon from "@/components/graphics/icons/MenuIcon.vue";
 
 export default {
   components: {
     Logo,
-    MenuIcon
+    MenuIcon,
   },
   props: {
-    overlay: Boolean
+    overlay: Boolean,
+  },
+  setup() {
+    const switchLocalePath = useSwitchLocalePath();
+    const { locale } = useI18n();
+
+    const otherLocalePath = () => {
+      const otherLocale = locale.value === "no" ? "en" : "no";
+      return switchLocalePath(otherLocale);
+    };
+
+    return { locale, otherLocalePath };
   },
   data() {
     return {
-      menuOpen: false
-    }
+      menuOpen: false,
+    };
   },
   methods: {
     toAnchor(anchor) {
       document.querySelector(anchor).scrollIntoView({
-          behavior: 'smooth'
-      })
+        behavior: "smooth",
+      });
       // close menu if on mobile
-      this.menuOpen = false
+      this.menuOpen = false;
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
@@ -59,9 +97,9 @@ export default {
       } else {
         document.body.style.overflow = 'auto'
       }*/
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -116,29 +154,29 @@ export default {
       content: "";
       display: block;
       position: absolute;
-      bottom: -.1em;
+      bottom: -0.1em;
       left: 0;
       height: var(--border-width);
       width: 0;
       background: currentColor;
-      transition: width .3s ease;
+      transition: width 0.3s ease;
     }
     &:hover {
       &:after {
         width: 100%;
-        transition: width .36s ease;
+        transition: width 0.36s ease;
       }
     }
   }
   .overlay {
     nav-link {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
       &:after {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
       }
     }
     .logo {
-      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .7));
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
     }
   }
 
@@ -165,8 +203,6 @@ export default {
     }
   }
 }
-
-
 
 .nav-mobile {
   position: fixed;
@@ -250,10 +286,10 @@ export default {
     .nav-mobile {
       opacity: 1;
       transform: translateY(0);
-      animation: menuEnter .3s linear forwards;
+      animation: menuEnter 0.3s linear forwards;
 
       &-link {
-        animation: menuItemEnter .3s linear forwards;
+        animation: menuItemEnter 0.3s linear forwards;
       }
     }
   }

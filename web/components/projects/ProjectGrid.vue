@@ -6,7 +6,7 @@
       :project="project"
     />
     <div v-if="data.projects.length > limit" class="project-grid__show-more">
-      <NuxtLink to="/prosjekter">Se alle prosjekter</NuxtLink>
+      <NuxtLink :to="localePath('/prosjekter')">{{ $t("seeAllProjects") }}</NuxtLink>
     </div>
   </section>
 </template>

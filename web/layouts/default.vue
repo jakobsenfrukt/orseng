@@ -64,7 +64,7 @@ export default {
     overlay() {
       // the index page needs an overlay class
       const route = useRoute();
-      return route.name === "index";
+      return route.name.startsWith("index___");
     },
   },
   methods: {
@@ -77,7 +77,7 @@ export default {
   },
   updated() {
     const route = useRoute();
-    if (route.name === "prosjekter-slug") {
+    if (route.name.startsWith("prosjekter-slug___")) {
       return;
     }
     this.changeColor();
