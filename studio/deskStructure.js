@@ -1,9 +1,14 @@
-import S from '@sanity/desk-tool/structure-builder'
+const hiddenDocTypes = (listItem) =>
+  ![
+    'category',
+    'project',
+    'siteSettings',
+    'about',
+    'frontpage',
+    'contact',
+  ].includes(listItem.getId())
 
-const hiddenDocTypes = listItem =>
-  !['category', 'project', 'siteSettings', 'about', 'frontpage', 'contact'].includes(listItem.getId())
-
-export default () =>
+export default (S) =>
   S.list()
     .title('Innhold')
     .items([
@@ -54,5 +59,5 @@ export default () =>
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
+      ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])
