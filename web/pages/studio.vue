@@ -20,7 +20,7 @@
     </section>
     <div class="grid">
       <section class="about-section services">
-        <h2 class="about-heading services-heading">Kompetanseområder</h2>
+        <h2 class="about-heading services-heading">{{ $t("competencies") }}</h2>
         <ul class="services-list">
           <li
             v-for="(service, index) in data.about.services"
@@ -32,7 +32,7 @@
         </ul>
       </section>
       <section class="about-section clients">
-        <h2 class="about-heading clients-heading">Kunder</h2>
+        <h2 class="about-heading clients-heading">{{ $t("customers") }}</h2>
         <ul class="clients-list">
           <li
             v-for="(client, index) in data.about.clients"
