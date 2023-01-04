@@ -11,7 +11,7 @@ export default {
     {
       name: 'title',
       title: 'Tittel',
-      type: 'string'
+      type: 'localeString'
     },
     {
       name: 'slug',
@@ -19,7 +19,7 @@ export default {
       type: 'slug',
       description: 'Slutten på URLen til prosjektet, eks. "orseng.no/prosjekter/slug-kommer-her". Må skrives med små bokstaver, og uten mellomrom eller ÆØÅ.',
       options: {
-        source: 'title',
+        source: 'title.no',
         maxLength: 96
       }
     },
@@ -31,7 +31,7 @@ export default {
     {
       name: 'lead',
       title: 'Ingress',
-      type: 'text'
+      type: 'localeText'
     },
     {
       title: 'Prosjektdetaljer',
@@ -41,7 +41,7 @@ export default {
     {
       name: 'description',
       title: 'Beskrivelse',
-      type: 'simplePortableText'
+      type: 'localeSimplePortableText'
     },
     {
       name: 'categories',
@@ -52,7 +52,7 @@ export default {
     {
       name: 'mainImage',
       title: 'Hovedbilde',
-      type: 'figure'
+      type: 'localeFigure'
     },
     {
       name: 'gallery',
@@ -60,7 +60,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'figure'
+          type: 'localeFigure'
         },
         {
           type: 'figureTwoColumn'
@@ -84,7 +84,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.no',
       media: 'mainImage'
     }
   }

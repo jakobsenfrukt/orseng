@@ -5,8 +5,14 @@ export default {
   fields: [
     {
       name: 'title',
-      type: 'string',
+      type: 'localeString',
       title: 'Title'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title.no',
+      subtitle: 'title.en'
+    }
+  }
 }

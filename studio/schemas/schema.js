@@ -7,6 +7,10 @@ import frontpage from './documents/frontpage'
 import contact from './documents/contact'
 
 // Object types
+import localeString from './objects/localeString'
+import localeSimplePortableText from './objects/localeSimplePortableText'
+import localeText from './objects/localeText'
+import localeFigure from './objects/localeFigure'
 import source from './objects/source'
 import figure from './objects/figure'
 import figureTwoColumn from './objects/figureTwoColumn'
@@ -20,6 +24,10 @@ import projectDetails from './objects/projectDetails'
 
 export default [
   /* objects */
+  localeString,
+  localeSimplePortableText,
+  localeText,
+  localeFigure,
   source,
   figure,
   figureTwoColumn,

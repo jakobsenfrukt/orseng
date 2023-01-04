@@ -6,6 +6,7 @@ const hiddenDocTypes = (listItem) =>
     'about',
     'frontpage',
     'contact',
+    'translation.metadata',
   ].includes(listItem.getId())
 
 export default (S) =>
