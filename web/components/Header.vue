@@ -10,9 +10,6 @@
       <Logo />
     </NuxtLink>
     <nav class="nav nav-main nav-right">
-      <NuxtLink class="nav-link" :to="otherLocalePath()">{{
-        locale === "no" ? "English" : "Norsk"
-      }}</NuxtLink>
       <span class="nav-link" @click="toAnchor('#kontakt')">{{
         $t("contact")
       }}</span>
@@ -22,6 +19,9 @@
         target="_blank"
         >Instagram</a
       >
+      <NuxtLink class="nav-link" :to="otherLocalePath()">{{
+        locale === "no" ? "EN" : "NO"
+      }}</NuxtLink>
     </nav>
     <div class="nav-mobile-wrapper" :class="{ open: menuOpen }">
       <div class="menu-toggle-wrapper">
@@ -47,7 +47,7 @@
         >
         <br />
         <NuxtLink class="nav-mobile-link" :to="otherLocalePath()">{{
-          locale === "no" ? "English" : "Norsk"
+          locale === "no" ? "EN" : "NO"
         }}</NuxtLink>
       </nav>
     </div>
