@@ -19,9 +19,9 @@
         target="_blank"
         >Instagram</a
       >
-      <NuxtLink class="nav-link" :to="otherLocalePath()">{{
-        locale === "no" ? "EN" : "NO"
-      }}</NuxtLink>
+      <NuxtLink class="nav-link locale-switch" :to="otherLocalePath()"
+        >EN / NO</NuxtLink
+      >
     </nav>
     <div class="nav-mobile-wrapper" :class="{ open: menuOpen }">
       <div class="menu-toggle-wrapper">
@@ -46,9 +46,9 @@
           >Instagram</a
         >
         <br />
-        <NuxtLink class="nav-mobile-link" :to="otherLocalePath()">{{
-          locale === "no" ? "EN" : "NO"
-        }}</NuxtLink>
+        <NuxtLink class="nav-mobile-link locale-switch" :to="otherLocalePath()"
+          >EN / NO</NuxtLink
+        >
       </nav>
     </div>
   </header>
@@ -191,6 +191,9 @@ export default {
     .nav-link {
       margin: 0 0 0 var(--spacing-l);
     }
+  }
+  .locale-switch {
+    white-space: nowrap;
   }
 }
 
