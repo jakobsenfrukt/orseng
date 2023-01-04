@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Seo title="Prosjekter" />
+    <Seo :title="$t('projects')" />
     <br /><br /><br /><br />
     <ProjectGridSmall />
   </div>

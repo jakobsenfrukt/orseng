@@ -1,23 +1,30 @@
 <template>
   <article class="project" :class="{ inview: isInView }">
     <div class="project-wrapper">
-      <h3 class="project-title">{{ project.title }}</h3>
+      <h3 class="project-title">{{ $localized(project.title, locale) }}</h3>
       <div class="project-image-wrapper">
         <img
           v-if="project.mainImage"
           class="project-image"
           :src="$urlFor(project.mainImage).width(1900).auto('format').url()"
-          :alt="project.mainImage.alt"
+          :alt="$localized(project.mainImage.alt, locale)"
         />
         <div class="overlay overlay-top"></div>
       </div>
       <div class="project-text">
-        <p class="project-lead" v-if="project.lead">{{ project.lead }}</p>
+        <p class="project-lead" v-if="$localized(project.lead, locale)">
+          {{ $localized(project.lead, locale) }}
+        </p>
         <div class="project-arrow"></div>
       </div>
       <NuxtLink
         class="project-link"
-        :to="localePath({ name: 'prosjekter-slug', params: {slug: project.slug.current}})"
+        :to="
+          localePath({
+            name: 'prosjekter-slug',
+            params: { slug: project.slug.current },
+          })
+        "
         >Link</NuxtLink
       >
 
@@ -40,6 +47,10 @@ export default {
   },
   props: {
     project: Object,
+  },
+  setup() {
+    const { locale } = useI18n();
+    return { locale };
   },
   data() {
     return {

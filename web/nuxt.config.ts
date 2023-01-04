@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   sanity: {
     projectId: "eparymf1",
-    dataset: "production",
+    dataset: "staging",
     // process.env.NODE_ENV === 'production'
     // apiVersion: '2021-10-18'
   },

@@ -67,10 +67,11 @@ export default {
     BlockContent,
   },
   async setup() {
+    const { locale } = useI18n();
     const query = groq`{
-      "about": *[_type == "about" && _id == "about"][0]
+      "about": *[_type == "about" && language == $language][0]
     }`;
-    const { data } = await useSanityQuery(query);
+    const { data } = await useSanityQuery(query, { language: locale });
     return { data };
   },
 };

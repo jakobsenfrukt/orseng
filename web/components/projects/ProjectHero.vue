@@ -1,11 +1,13 @@
 <template>
   <section class="project-hero">
     <div class="project-hero-title-wrapper">
-      <h1 class="project-hero-title">{{ project.title }}</h1>
+      <h1 class="project-hero-title">
+        {{ $localized(project.title, locale) }}
+      </h1>
     </div>
     <div class="project-hero-image">
       <img
-        :alt="project.mainImage.alt"
+        :alt="$localized(project.mainImage.alt, locale)"
         :src="$urlFor(project.mainImage).width(1800).auto('format').url()"
         class="project-hero-image-item"
       />
@@ -13,11 +15,16 @@
     <div class="project-hero-title-wrapper project-hero-title-wrapper-2">
       <h1 class="project-hero-title project-hero-title-2">
         <template v-if="project.categories.length"
-          >{{ project.categories[0].title }} &mdash; </template
+          >{{
+            $localized(project.categories[0].title, locale)
+          }}
+          &mdash; </template
         >{{ project.publishedAt.slice(0, 4) }}
       </h1>
     </div>
-    <p class="lead project-hero-lead" v-if="project.lead">{{ project.lead }}</p>
+    <p class="lead project-hero-lead" v-if="project.lead">
+      {{ $localized(project.lead, locale) }}
+    </p>
   </section>
 </template>
 
@@ -25,6 +32,10 @@
 export default {
   props: {
     project: Object,
+  },
+  setup() {
+    const { locale } = useI18n();
+    return { locale };
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const locale = useState<string>("locale.i18n");
+const { locale } = useI18n();
 </script>
 
 <template>

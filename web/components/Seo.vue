@@ -1,9 +1,11 @@
 <template>
   <Head>
-    <Title>{{ title }}{{ title ? ' - ': '' }}Ørseng Interiørarkitektur</Title>
+    <Title>{{ title }}{{ title ? " - " : "" }}Ørseng Interiørarkitektur</Title>
     <Meta
       name="description"
-      :content="description ?? defaults.settings.description"
+      :content="
+        description ?? $localized(defaults.settings.description, locale)
+      "
     />
     <Meta
       name="og:image"
@@ -14,6 +16,8 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
+
 const props = defineProps({
   title: String,
   description: String,

@@ -25,7 +25,7 @@
       </nav>
     </div>
     <div class="hero-text">
-      <p class="lead">{{ data.frontpage.lead }}</p>
+      <p class="lead">{{ $localized(data.frontpage.lead, locale) }}</p>
     </div>
   </section>
 </template>
@@ -37,7 +37,9 @@ export default {
   components: {
     Arrow,
   },
-  async setup() {
+  async setup(props, context) {
+    const { locale } = useI18n();
+
     const query = groq`{
       "frontpage": *[_type == "frontpage" && _id == "frontpage"] {
         lead,
@@ -46,7 +48,8 @@ export default {
     }`;
     const { data } = await useSanityQuery(query);
     const images = data.value.frontpage.hero;
-    return { data, images };
+
+    return { data, locale, images };
   },
   data() {
     return {

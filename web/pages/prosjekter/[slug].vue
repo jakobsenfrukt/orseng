@@ -1,8 +1,8 @@
 <template>
   <div>
     <Seo
-      :title="data.project.title"
-      :description="data.project.lead ?? ''"
+      :title="$localized(data.project.title, locale)"
+      :description="$localized(data.project.lead, locale) ?? ''"
       :ogImage="data.project.mainImage.asset.url"
     />
     <div class="project">
@@ -10,8 +10,8 @@
 
       <div class="project-content">
         <BlockContent
-          :blocks="data.project.description"
-          v-if="data.project.description"
+          :blocks="$localized(data.project.description, locale)"
+          v-if="$localized(data.project.description, locale)"
           class="block-content"
         />
       </div>
@@ -92,7 +92,8 @@ export default {
     BlockContent,
     ProjectItemSmall,
   },
-  async setup(props) {
+  async setup() {
+    const { locale } = useI18n();
     const route = useRoute();
     const slug = route.params.slug;
     const query = groq`{
@@ -103,7 +104,7 @@ export default {
       }
     }`;
     const { data } = await useSanityQuery(query, { slug });
-    return { data };
+    return { data, locale };
   },
   mounted() {
     if (this.data.project.themePalette) {

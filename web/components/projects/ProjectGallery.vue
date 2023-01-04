@@ -1,35 +1,43 @@
 <template>
   <section class="project-gallery">
-    <div v-for="(item, index) in content" :key="`gallery-${index}`" class="project-gallery-row">
+    <div
+      v-for="(item, index) in content"
+      :key="`gallery-${index}`"
+      class="project-gallery-row"
+    >
       <div v-if="item._type === 'figure'" class="single">
         <figure>
           <img
             :src="$urlFor(item.asset).width(1600).auto('format').url()"
-            :alt="item.alt"
+            :alt="$localized(item.alt, locale)"
           />
-          <figcaption v-if="item.caption">
-            <p class="caption">{{ item.caption }}</p>
+          <figcaption v-if="$localized(item.caption, locale)">
+            <p class="caption">{{ $localized(item.caption, locale) }}</p>
           </figcaption>
         </figure>
       </div>
 
-      <div v-if="item._type === 'figureTwoColumn'" class="double" :class="item.columns">
+      <div
+        v-if="item._type === 'figureTwoColumn'"
+        class="double"
+        :class="item.columns"
+      >
         <figure>
           <img
             :src="$urlFor(item.image1.asset).width(800).auto('format').url()"
             :alt="item.image1.alt"
           />
-          <figcaption v-if="item.image1.caption">
-            <p class="caption">{{ item.image1.caption }}</p>
+          <figcaption v-if="$localized(item.image1.caption, locale)">
+            <p class="caption">{{ $localized(item.image1.caption, locale) }}</p>
           </figcaption>
         </figure>
         <figure>
           <img
             :src="$urlFor(item.image2.asset).width(800).auto('format').url()"
-            :alt="item.image2.alt"
+            :alt="$localized(item.image2.alt, locale)"
           />
-          <figcaption v-if="item.image2.caption">
-            <p class="caption">{{ item.image2.caption }}</p>
+          <figcaption v-if="$localized(item.image2.caption, locale)">
+            <p class="caption">{{ $localized(item.image2.caption, locale) }}</p>
           </figcaption>
         </figure>
       </div>
@@ -38,28 +46,28 @@
         <figure>
           <img
             :src="$urlFor(item.image1.asset).width(600).auto('format').url()"
-            :alt="item.image1.alt"
+            :alt="$localized(item.image1.alt, locale)"
           />
-          <figcaption v-if="item.image1.caption">
-            <p class="caption">{{ item.image1.caption }}</p>
+          <figcaption v-if="$localized(item.image1.caption, locale)">
+            <p class="caption">{{ $localized(item.image1.caption, locale) }}</p>
           </figcaption>
         </figure>
         <figure>
           <img
             :src="$urlFor(item.image2.asset).width(600).auto('format').url()"
-            :alt="item.image2.alt"
+            :alt="$localized(item.image2.alt, locale)"
           />
-          <figcaption v-if="item.image2.caption">
-            <p class="caption">{{ item.image2.caption }}</p>
+          <figcaption v-if="$localized(item.image2.caption, locale)">
+            <p class="caption">{{ $localized(item.image2.caption, locale) }}</p>
           </figcaption>
         </figure>
         <figure>
           <img
             :src="$urlFor(item.image3.asset).width(600).auto('format').url()"
-            :alt="item.image3.alt"
+            :alt="$localized(item.image3.alt, locale)"
           />
-          <figcaption v-if="item.image3.caption">
-            <p class="caption">{{ item.image3.caption }}</p>
+          <figcaption v-if="$localized(item.image3.caption, locale)">
+            <p class="caption">{{ $localized(item.image3.caption, locale) }}</p>
           </figcaption>
         </figure>
       </div>
@@ -76,16 +84,20 @@
 <script>
 export default {
   props: {
-    content: Array
-  }
-}
+    content: Array,
+  },
+  setup() {
+    const { locale } = useI18n();
+    return { locale };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .project-gallery {
   width: 100%;
   padding: var(--spacing-l);
-  
+
   &-row {
     margin-bottom: var(--spacing-m);
   }
@@ -135,11 +147,15 @@ export default {
     column-gap: var(--spacing-m);
   }
 
-  .single, .double, .triple, .video {
+  .single,
+  .double,
+  .triple,
+  .video {
     margin-bottom: var(--spacing-m);
   }
 
-  .double, .triple {
+  .double,
+  .triple {
     align-items: flex-start;
   }
 
@@ -168,7 +184,7 @@ export default {
     bottom: 0;
     width: 100%;
     padding: var(--spacing-l) var(--spacing) var(--spacing);
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
   }
 
   img {
@@ -178,7 +194,8 @@ export default {
 
 @media (max-width: 800px) {
   .project-gallery {
-    .double, .triple {
+    .double,
+    .triple {
       display: block;
     }
     figure {
@@ -187,7 +204,7 @@ export default {
     figcaption {
       position: static;
       background: transparent;
-      padding: .5rem 0 1rem;
+      padding: 0.5rem 0 1rem;
       .caption {
         color: var(--color-text);
       }

@@ -7,11 +7,11 @@
         :src="
           $urlFor(project.mainImage).height(600).width(800).auto('format').url()
         "
-        :alt="project.mainImage.alt"
+        :alt="$localized(project.mainImage.alt, locale)"
       />
     </div>
     <div class="project-text">
-      <h3 class="project-title">{{ project.title }}</h3>
+      <h3 class="project-title">{{ $localized(project.title, locale) }}</h3>
       <div class="project-arrow"></div>
     </div>
     <NuxtLink
@@ -31,6 +31,10 @@
 export default {
   props: {
     project: Object,
+  },
+  setup() {
+    const { locale } = useI18n();
+    return { locale };
   },
 };
 </script>

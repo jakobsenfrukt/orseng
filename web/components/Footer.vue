@@ -1,6 +1,6 @@
 <template>
   <footer class="site-footer" id="kontakt">
-    <h2 class="contact-heading">{{ data.contact.title }}</h2>
+    <h2 class="contact-heading">{{ $localized(data.contact.title, locale) }}</h2>
     <div class="contact-grid">
       <div>
         <h3 class="contact-label">{{ $t("contact") }}</h3>
@@ -32,7 +32,7 @@
       <div>
         <h3 class="contact-label">{{ $t("address") }}</h3>
         <span class="contact-text">
-          <BlockContent :blocks="data.contact.address" />
+          <BlockContent :blocks="$localized(data.contact.address, locale)" />
         </span>
         <a class="contact-link" :href="data.contact.maplink" target="_blank">{{
           $t("viewMap")
@@ -53,6 +53,8 @@
 </template>
 
 <script setup lang="jsx">
+const { locale } = useI18n();
+
 const query = groq`{
   "contact": *[_type == "contact" && _id == "contact"] {
     title,
