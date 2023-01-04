@@ -4,7 +4,7 @@
       <img
         v-for="(image, index) in data.frontpage.hero"
         :key="index"
-        :alt="image.alt"
+        :alt="$localized(image.alt, locale)"
         :src="$urlFor(image).width(1900).auto('format').url()"
         class="hero-image-item"
         :class="index === currentIndex ? 'current' : ''"
