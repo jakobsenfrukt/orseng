@@ -51,6 +51,12 @@ body[data-theme="dark"] {
   --color-detail: var(--color-text-dark);
 }
 
+@media (max-width: 1300px) {
+  :root {
+    --spacing-l: 2rem;
+  }
+}
+
 @media (max-width: 1000px) {
   :root {
     --font-xs: .8rem;

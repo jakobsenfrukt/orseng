@@ -177,7 +177,6 @@ export default {
   &-main {
     display: flex;
     align-items: center;
-    padding: 0 2rem;
   }
 
   &-link {
@@ -209,12 +208,14 @@ export default {
   }
 
   &-left {
+    padding: 0 0 0 2rem;
     justify-content: flex-start;
     .nav-link {
       margin: 0 var(--spacing-l) 0 0;
     }
   }
   &-right {
+    padding: 0 2rem 0 0;
     justify-content: flex-end;
     .nav-link {
       margin: 0 0 0 var(--spacing-l);
@@ -222,17 +223,6 @@ export default {
   }
   .locale-switch {
     white-space: nowrap;
-  }
-}
-
-@media (max-width: 1000px) {
-  .nav {
-    padding: 1rem 2rem;
-    &-main {
-      .nav-link {
-        display: none;
-      }
-    }
   }
 }
 
@@ -300,7 +290,22 @@ export default {
   display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1400px) {
+  .nav {
+    &-left {
+      .nav-link {
+        margin: 0 var(--spacing-m) 0 0;
+      }
+    }
+    &-right {
+      .nav-link {
+        margin: 0 0 0 var(--spacing-m);
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
   .nav {
     &-main {
       .nav-link {
@@ -356,6 +361,12 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav {
+    padding: 1rem 2rem;
   }
 }
 </style>
