@@ -9,7 +9,7 @@ export default {
       type: 'string'
     },
     {
-      name: 'localeText',
+      name: 'text',
       title: 'Tekst',
       type: 'simplePortableText'
     },
