@@ -5,7 +5,7 @@
     window.__theme = newTheme;
     preferredTheme = newTheme;
     if (document.body) {
-        document.body.setAttribute("data-theme", newTheme);
+      document.body.setAttribute("data-theme", newTheme);
     }
     window.__onThemeChange(newTheme);
   }
@@ -27,5 +27,7 @@
     window.__setPreferredTheme(e.matches ? "dark" : "light");
   });
 
-  setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
+  document.addEventListener("DOMContentLoaded", function (event) {
+    setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
+  });
 })();
