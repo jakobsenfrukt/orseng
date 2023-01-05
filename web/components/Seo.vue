@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Title>{{ title }}{{ title ? " - " : "" }}Ørseng Interiørarkitektur</Title>
+    <Title>{{ title }}{{ title ? " - " : "" }}{{ $t('orseng') }}</Title>
     <Meta
       name="description"
       :content="

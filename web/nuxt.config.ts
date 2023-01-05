@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       availableLocales: ["no", "en"],
       messages: {
         no: {
+          orseng: "Ørseng Interiørarkitektur",
           projects: "Prosjekter",
           contact: "Kontakt",
           toTheTop: "Til toppen",
@@ -54,6 +55,7 @@ export default defineNuxtConfig({
           competencies: "Kompetanseområder",
         },
         en: {
+          orseng: "Ørseng Interior Architecture",
           projects: "Projects",
           contact: "Contact",
           toTheTop: "To the top",
