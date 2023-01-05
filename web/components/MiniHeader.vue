@@ -113,6 +113,11 @@ export default {
       }*/
     },
   },
+  watch: {
+    $route() {
+      this.menuOpen = false;
+    },
+  },
 };
 </script>
 
