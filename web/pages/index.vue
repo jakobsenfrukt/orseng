@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Seo title="Forside" />
+    <Seo :title="$t('index')" />
     <Hero />
     <ProjectGrid />
     <Instafeed />

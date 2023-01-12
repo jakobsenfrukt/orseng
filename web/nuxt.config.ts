@@ -39,6 +39,7 @@ export default defineNuxtConfig({
       messages: {
         no: {
           orseng: "Ørseng Interiørarkitektur",
+          index: "Forside",
           projects: "Prosjekter",
           contact: "Kontakt",
           toTheTop: "Til toppen",
@@ -56,6 +57,7 @@ export default defineNuxtConfig({
         },
         en: {
           orseng: "Ørseng Interior Architecture",
+          index: "Front page",
           projects: "Projects",
           contact: "Contact",
           toTheTop: "To the top",
