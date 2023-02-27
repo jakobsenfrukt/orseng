@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://use.typekit.net/sud1ucm.css");
+
+:root {
+  --font-main: 'neue-kabel', sans-serif;
+  --font-display: 'wulkan display', serif;
+
+  --font-xs: .8rem;
+  --font-s: .9rem;
+  --font-m: 1.4rem;
+  --font-l: 2.4rem;
+  --font-xl: 5rem;
+  --font-xxl: 7rem;
+
+  --letter-spacing: .08em;
+
+  --spacing: 1rem;
+  --spacing-s: 1.5rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3rem;
+  --spacing-xl: 3.5rem;
+  --spacing-xxl: 6rem;
+  
+  --border-width: 2px;
+  --border-width-thin: 1px;
+
+  // colors
+  --color-black: rgb(18, 15, 20);
+  --color-white: rgb(250, 248, 246);
+
+  --color-background-light: var(--color-white);
+  --color-text-light: var(--color-black);
+  --color-detail-light: var(--color-black);
+
+  --color-background-dark: var(--color-black);
+  --color-text-dark: var(--color-white);
+  --color-detail-dark: var(--color-white);
+}
+
+body {
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-detail: var(--color-detail-light);
+}
+
+// dark theme
+body[data-theme="dark"] {
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-detail: var(--color-text-dark);
+}
+
+@media (max-width: 1300px) {
+  :root {
+    --spacing-l: 2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --font-xs: .8rem;
+    --font-s: .9rem;
+    --font-m: 1.4rem;
+    --font-l: 1.8rem;
+    --font-xl: 3rem;
+    --font-xxl: 5rem;
+
+    --spacing: .5rem;
+    --spacing-s: .75rem;
+    --spacing-m: 1rem;
+    --spacing-l: 1.5rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 4rem;
+  }
+}

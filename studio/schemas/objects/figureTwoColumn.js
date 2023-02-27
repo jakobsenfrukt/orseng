@@ -6,12 +6,12 @@ export default {
     {
       name: 'image1',
       title: 'Bilde 1',
-      type: 'figure'
+      type: 'localeFigure'
     },
     {
       name: 'image2',
       title: 'Bilde 2',
-      type: 'figure'
+      type: 'localeFigure'
     },
     {
       title: 'Kolonner',

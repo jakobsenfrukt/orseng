@@ -6,34 +6,39 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Tittel'
+      title: 'Tittel',
+    },
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
     },
     {
       name: 'lead',
       title: 'Intro',
-      type: 'text'
+      type: 'text',
     },
     {
       name: 'studio',
       title: 'Om studioet',
-      type: 'studio'
+      type: 'studio',
     },
     {
       name: 'services',
       title: 'Kompetanseområder',
       type: 'array',
-      of: [{type: 'string'}]
+      of: [{ type: 'string' }],
     },
     {
       name: 'clients',
       title: 'Kunder',
       type: 'array',
-      of: [{type: 'string'}]
+      of: [{ type: 'string' }],
     },
     {
       name: 'bio',
       title: 'Om meg',
-      type: 'bio'
-    }
-  ]
+      type: 'bio',
+    },
+  ],
 }

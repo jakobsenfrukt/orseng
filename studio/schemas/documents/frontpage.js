@@ -6,13 +6,23 @@ export default {
     {
       name: 'lead',
       title: 'Intro',
-      type: 'text'
+      type: 'localeText'
     },
     {
       name: 'hero',
       title: 'Forsidebilder',
       type: 'array',
-      of: [{type: 'figure'}]
+      of: [{type: 'localeFigure'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare(selection) {
+      return {
+        title: 'Forside',
+      }
+    }
+  }
 }

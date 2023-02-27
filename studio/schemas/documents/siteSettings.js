@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: 'description',
-      type: 'text',
+      type: 'localeText',
       title: 'Beskrivelse',
       description: 'Beskrivelse som dukker opp i søkemotorer og sosiale medier.'
     },
@@ -21,5 +21,15 @@ export default {
       title: 'Fargepalett',
       type: 'themePalette'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare(selection) {
+      return {
+        title: 'Generelt',
+      }
+    }
+  }
 }

@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: 'title',
-      type: 'string',
+      type: 'localeString',
       title: 'Overskrift'
     },
     {
@@ -36,12 +36,22 @@ export default {
     {
       name: 'address',
       title: 'Adresse',
-      type: 'simplePortableText'
+      type: 'localeSimplePortableText'
     },
     {
       name: 'maplink',
       type: 'string',
       title: 'Lenke til Google Maps'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare(selection) {
+      return {
+        title: 'Kontakt',
+      }
+    }
+  }
 }
