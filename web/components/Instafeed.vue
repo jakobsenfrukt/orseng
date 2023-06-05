@@ -3,18 +3,18 @@
     <div class="instafeed-heading">
         <h2>Instagram</h2>
       </div>
-    <!-- SnapWidget -->
-    <iframe src="https://snapwidget.com/embed/963337" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
-    <a href="https://instagram.com/orseng.interiorarkitektur" target="_blank" class="instalink"></a>
+    <!-- Behold widget -->
+    <figure data-behold-id="yqpATy2v2Boc7l16DaZG"></figure>
   </section>
 </template>
 
 <script>
 export default {
   mounted() {
-    let recaptchaScript = document.createElement('script')
-    recaptchaScript.setAttribute('src', 'https://snapwidget.com/js/snapwidget.js')
-    document.head.appendChild(recaptchaScript)
+    let instagramScript = document.createElement('script')
+    instagramScript.setAttribute('src', 'https://w.behold.so/widget.js')
+    instagramScript.setAttribute('type', 'module')
+    document.head.appendChild(instagramScript)
   }
 }
 </script>
